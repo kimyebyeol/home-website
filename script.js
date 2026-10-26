@@ -126,7 +126,13 @@ phoneInput.addEventListener("input", () => {
 
       setStatus("");
 
-      if (!form.reportValidity()) return;
+    if (!form.reportValidity()) {
+  setStatus(
+    "입력하지 않았거나 형식이 맞지 않는 항목이 있습니다. 팝업 위쪽의 이름·휴대전화번호와 필수 동의를 확인해 주세요.",
+    true
+  );
+  return;
+}
 
       const applicantName = nameInput.value.trim();
       const phone = phoneInput.value.replace(/[\s-]/g, "");
