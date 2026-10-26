@@ -180,7 +180,10 @@ contactTime,
         advertising: getChoice("advertising") === "yes"
       };
 
-      const fingerprint = JSON.stringify(payload);
+alert(
+  "활동지역: " + (payload.region || "(빈칸)") +
+  "\n연락시간: " + (payload.contactTime || "(빈칸)")
+);
 
       if (!pendingRequest || pendingRequest.fingerprint !== fingerprint) {
         pendingRequest = {
