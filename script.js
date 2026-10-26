@@ -171,8 +171,8 @@ phoneInput.addEventListener("input", () => {
       const payload = {
         name: applicantName,
         phone,
-        region: optionalPrivacy ? region : "",
-        contactTime: optionalPrivacy ? contactTime : "",
+       region,
+contactTime,
         privacy: true,
         optionalPrivacy,
         marketing: getChoice("marketing") === "yes",
