@@ -180,7 +180,7 @@ contactTime,
         advertising: getChoice("advertising") === "yes"
       };
 
-
+const fingerprint = JSON.stringify(payload);
       if (!pendingRequest || pendingRequest.fingerprint !== fingerprint) {
         pendingRequest = {
           fingerprint,
