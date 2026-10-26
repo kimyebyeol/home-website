@@ -224,6 +224,13 @@ const fingerprint = JSON.stringify(payload);
         });
 
         const result = await response.json().catch(() => null);
+        if (result?.code === "DUPLICATE_PHONE") {
+  showError(
+    "이미 신청한 휴대전화번호입니다. 담당자가 확인 후 연락드리겠습니다.",
+    phoneInput
+  );
+  return;
+}
 
         if (!response.ok) {
           setStatus(
