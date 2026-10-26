@@ -1,3 +1,4 @@
+alert("새 script.js가 연결됐어요");
 (() => {
   // 실제 신청 저장 API 주소를 입력하세요.
   const APPLY_API_URL = "https://script.google.com/macros/s/AKfycbyuxcKXjMxL16gHen3yV3BWBBWZTZeEFsqsfrktsaK1MKss6OgclgUJ0sYgcBp09n6BYw/exec";
