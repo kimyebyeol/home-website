@@ -31,9 +31,6 @@
         <a href="#faq">Q&A</a>
       </nav>
 
-      <button class="btn btn-sm" data-open>
-        파트너 신청
-      </button>
     </div>
   </header>
 
@@ -603,101 +600,362 @@
 
   </main>
 
+ 
+<!-- ======================================
+     오른쪽 하단 고정 신청 버튼
+     이미 있으면 중복 추가하지 마세요.
+====================================== -->
+<button
+  type="button"
+  class="floating-apply-btn"
+  data-open
+>
+  신청하기
+</button>
 
-  <!-- 파트너 신청 팝업 -->
-  <dialog id="applyDialog" aria-labelledby="dialogTitle">
+<!-- ======================================
+     봉안당 HOME 영업파트너 신청 팝업
+====================================== -->
+<dialog id="applyDialog" aria-labelledby="dialogTitle">
 
-    <div class="modal-header">
-      <div>
-        <small>HOME PARTNERSHIP</small>
-        <h2 id="dialogTitle">영업파트너 신청</h2>
-      </div>
-
-      <button
-        class="x"
-        id="closeModal"
-        type="button"
-        aria-label="닫기"
-      >
-        ×
-      </button>
+  <div class="apply-header">
+    <div>
+      <small>HOME PARTNERSHIP</small>
+      <h2 id="dialogTitle">영업파트너 신청</h2>
+      <p>신청 정보를 입력하고 상담을 안내받아 보세요.</p>
     </div>
 
-    <form id="applyForm" novalidate>
+    <button
+      type="button"
+      id="closeModal"
+      class="apply-close"
+      aria-label="닫기"
+    >×</button>
+  </div>
 
-      <label for="name">이름 *</label>
+  <form id="applyForm" novalidate>
+    
+
+
+
+    <!-- 이름 -->
+    <div class="apply-field">
+      <label for="name">이름 <span>*</span></label>
       <input
         id="name"
         name="name"
+        type="text"
+        placeholder="예) 홍길동"
         autocomplete="name"
         maxlength="30"
         required
-        placeholder="이름"
       >
+    </div>
 
-      <label for="phone">휴대전화번호 *</label>
+    <!-- 휴대전화 -->
+    <div class="apply-field">
+      <label for="phone">휴대전화 <span>*</span></label>
       <input
         id="phone"
         name="phone"
         type="tel"
-        inputmode="tel"
+        inputmode="numeric"
         autocomplete="tel"
         maxlength="13"
-        required
         placeholder="010-0000-0000"
+        required
       >
+      <p class="apply-hint">
+        상담 안내를 받을 수 있는 연락처를 입력해 주세요.
+      </p>
+    </div>
 
-      <label for="region">활동 희망지역 (선택)</label>
+    <!-- 활동 희망지역 -->
+    <div class="apply-field">
+      <label for="region">활동 희망지역 <span>*</span></label>
+
+      <div class="apply-region-row">
+        <select id="region" name="region" required>
+          <option value="">시/도</option>
+          <option>서울특별시</option>
+          <option>경기도</option>
+          <option>인천광역시</option>
+          <option>부산광역시</option>
+          <option>대구광역시</option>
+          <option>광주광역시</option>
+          <option>대전광역시</option>
+          <option>울산광역시</option>
+          <option>세종특별자치시</option>
+          <option>강원특별자치도</option>
+          <option>충청북도</option>
+          <option>충청남도</option>
+          <option>전북특별자치도</option>
+          <option>전라남도</option>
+          <option>경상북도</option>
+          <option>경상남도</option>
+          <option>제주특별자치도</option>
+        </select>
+
+        <select
+          id="district"
+          name="district"
+          required
+          disabled
+        >
+          <option value="">시/군/구</option>
+        </select>
+      </div>
+
       <input
-        id="region"
-        name="region"
+        id="districtOther"
+        name="districtOther"
+        type="text"
+        placeholder="시/군/구를 입력해 주세요"
         maxlength="50"
-        placeholder="예: 경기 성남시"
+        hidden
       >
+    </div>
 
-      <label for="contact">연락 가능 시간 (선택)</label>
-      <select id="contact" name="contact">
-        <option value="">선택해 주세요</option>
-        <option>오전</option>
-        <option>오후</option>
-        <option>시간 무관</option>
+    <!-- 상담 가능 시간 -->
+    <div class="apply-field">
+      <label for="contact">상담 가능 시간 <span>*</span></label>
+
+      <select id="contact" name="contact" required>
+        <option value="">시간을 선택해 주세요</option>
+        <option value="오전 9시~12시">오전 9시~12시</option>
+        <option value="오후 12시~3시">오후 12시~3시</option>
+        <option value="오후 3시~6시">오후 3시~6시</option>
       </select>
+    </div>
+<!-- 약관 전체 동의 -->
+<div class="apply-agree-all">
+  <label for="agreeAll">
+    <input
+      type="checkbox"
+      id="agreeAll"
+    >
+    <span>약관에 전체 동의합니다</span>
+  </label>
 
-      <div class="agree">
-        <label>
-          <input id="agree" type="checkbox" required>
-          [필수] 개인정보 수집·이용 동의
-        </label>
+  <p>
+    ※ 전체 동의 시 선택 항목도 포함되며,
+    개별 선택도 가능합니다.
+  </p>
+</div>
+    <!-- 개인정보 필수 동의 -->
+    <section class="apply-agreement">
 
-        <p>
-          수집: 이름, 휴대전화번호 · 목적: 신청 확인 및 연락.
-          실제 서비스 운영 전 개인정보처리방침·보유기간·처리자 정보를 추가해야 합니다.
+      <h3>
+        <span class="apply-check">✓</span>
+        개인정보 수집·이용 동의 (필수)
+      </h3>
+
+      <div class="apply-policy" tabindex="0">
+
+        <p class="apply-policy-red">
+          영업파트너 신청 및 상담을 위한 개인정보
+          수집·이용 안내입니다.
         </p>
 
+        <p>
+          <strong>개인정보처리자</strong><br>
+          뛰는사람들 A&amp;A
+        </p>
+
+        <h4>1. 개인정보 수집·이용에 관한 사항</h4>
+
+        <p>
+          <strong>수집·이용 목적</strong><br>
+          봉안당 HOME 영업파트너 신청 접수 및 확인<br>
+          영업파트너 위촉조건 및 활동 방법 상담<br>
+          상담 일정 조율과 신청 관련 후속 안내
+        </p>
+
+        <p>
+          <strong>수집·이용 항목</strong><br>
+          이름, 휴대전화번호, 활동 희망지역,
+          상담 가능 시간
+        </p>
+
+        <p>
+          <strong>보유 및 이용기간</strong><br>
+          [실제 운영정책에 따른 기간 확정 필요]<br>
+          보유기간 종료 후 관계 법령에 따른
+          보존 의무가 없다면 안전하게 파기합니다.
+        </p>
+
+        <p>
+          <strong>동의 거부 권리 및 불이익</strong><br>
+          개인정보 수집·이용에 동의하지 않을 수 있습니다.
+          다만 필수 동의를 거부하면 신청 접수 및
+          상담 서비스를 제공하기 어렵습니다.
+        </p>
+      </div>
+
+      <p class="apply-consent-title">
+        위 개인정보 수집·이용에 동의하십니까?
+      </p>
+
+      <div class="apply-radio-row">
         <label>
-          <input id="agreeOptional" type="checkbox">
-          [선택] 활동지역·연락시간 수집·이용 동의
+          <input
+            type="radio"
+            name="privacyConsent"
+            value="yes"
+          >
+          동의함
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="privacyConsent"
+            value="no"
+          >
+          동의하지 않음
         </label>
       </div>
+    </section>
+
+    
+<!-- 마케팅 개인정보 선택 동의 -->
+<section class="apply-agreement">
+
+  <h3>
+    <span class="apply-check">✓</span>
+    마케팅 목적 개인정보 이용 동의 (선택)
+  </h3>
+
+  <p class="apply-optional">
+    ※ 동의하지 않아도 영업파트너 신청이 가능합니다.
+  </p>
+
+  <!-- 스크롤 박스 시작 -->
+  <div class="apply-policy apply-marketing-scroll" tabindex="0">
+
+    <p class="apply-policy-red">
+      봉안당 HOME 영업파트너 관련 마케팅 정보를
+      제공하기 위한 개인정보 이용 안내입니다.
+    </p>
+
+    <p>
+      <strong>개인정보처리자</strong><br>
+      뛰는사람들 A&amp;A
+      (정확한 사업자 명칭 확인 필요)
+    </p>
+
+    <h4>1. 마케팅 목적 개인정보 이용에 관한 사항</h4>
+
+    <p>
+      <strong>이용 목적</strong><br>
+      영업파트너 모집 및 활동 관련 소식 안내<br>
+      설명회·행사 및 홍보 정보 제공
+    </p>
+
+    <p>
+      <strong>이용 항목</strong><br>
+      이름, 휴대전화번호
+    </p>
+
+    <p>
+      <strong>보유 및 이용기간</strong><br>
+      [실제 운영정책에 따른 기간 확정 필요]
+    </p>
+
+    <p>
+      <strong>동의 거부 권리 및 불이익</strong><br>
+      동의하지 않아도 영업파트너 신청과 상담 진행에는
+      제한이 없습니다.
+      다만 선택적인 홍보 안내는 제공되지 않습니다.
+    </p>
+
+    <p class="apply-consent-title">
+      위 마케팅 목적 개인정보 이용에 동의하십니까?
+    </p>
+
+    <div class="apply-radio-row">
+      <label>
+        <input
+          type="radio"
+          name="marketingConsent"
+          value="yes"
+        >
+        동의함
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          name="marketingConsent"
+          value="no"
+        >
+        동의하지 않음
+      </label>
+    </div>
+
+    <!-- 광고성 정보 수신 동의도 같은 스크롤 안에 배치 -->
+    <p class="apply-ad-text">
+      영업파트너 관련 광고성 정보
+      (전화·문자·카카오톡) 수신에 동의합니다.
+    </p>
+
+    <div class="apply-radio-row">
+      <label>
+        <input
+          type="radio"
+          name="advertisingConsent"
+          value="yes"
+        >
+        동의함
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          name="advertisingConsent"
+          value="no"
+        >
+        동의하지 않음
+      </label>
+    </div>
+
+  </div>
+  <!-- 스크롤 박스 끝 -->
+
+</section>
+
+
+    <!-- 신청 완료 -->
+    <div class="apply-bottom">
+
+      <h3>거의 완료되었어요!</h3>
+      <p>
+        신청 정보를 확인하고<br>
+        아래 버튼을 눌러주세요.
+      </p>
 
       <p
         id="formMessage"
-        class="form-message"
+        class="apply-message"
         role="status"
         aria-live="polite"
       ></p>
 
-      <button class="btn btn-wide" type="submit">
-        신청하기
+      <button
+        type="submit"
+        class="apply-submit-btn"
+      >
+        신청 완료
       </button>
 
-      <p class="disclaimer">
-        현재 데모입니다. 서버 미연결 상태로 신청 정보가 전송·저장되지 않습니다.
-        휴대전화번호 중복 신청 차단 역시 서버 연동이 필요합니다.
+      <p class="apply-notice">
+        현재 테스트 버전으로 실제 신청이 접수되지는 않습니다.
       </p>
 
-    </form>
-  </dialog>
+    </div>
+
+  </form>
+</dialog>
 
 </body>
 </html>
