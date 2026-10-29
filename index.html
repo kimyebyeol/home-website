@@ -24,7 +24,7 @@
       </a>
 
       <nav aria-label="페이지 메뉴">
-        <a href="#benefits">파트너 혜택</a>
+        <a href="#benefits">파트너스 혜택</a>
         <a href="#spaces">공간 소개</a>
         <a href="#steps">활동 방법</a>
         <a href="#income">예상 수익</a>
@@ -62,11 +62,27 @@
 
         </div>
 
-        <img
-          class="hero-image"
-          src="./assets/hero-original.png"
-          alt="봉안당 HOME 야경과 두 회사의 로고"
-        >
+       
+<picture class="hero-picture">
+  <!-- 모바일 -->
+  <source
+    media="(max-width: 650px)"
+    srcset="./assets/home_phone.png"
+  >
+
+  <!-- 태블릿 -->
+  <source
+    media="(max-width: 1199px)"
+    srcset="./assets/hero_tablet.png"
+  >
+
+  <img
+    class="hero-image"
+    src="./assets/hero-original.png"
+    alt="봉안당 HOME 야경과 파트너십 로고"
+  >
+</picture>
+
       </div>
     </section>
 
@@ -122,7 +138,7 @@
       <div class="container">
         <div class="section-heading">
           <h2>
-            처음 시작해도,<br>
+            처음 시작해도<br>
             <em>든든하게</em>
           </h2>
         </div>
@@ -138,7 +154,7 @@
             <h3>자유롭게 활동</h3>
             <p>
               출퇴근 없이, 영업 압박 없이<br>
-              원하는 시간에 자유롭게 활동
+              자유롭게 활동
             </p>
           </article>
 
@@ -178,7 +194,7 @@
 
         <div class="section-heading center">
           <h2>
-            내가 소개할 공간,<br>
+            내가 소개할 공간<br>
             먼저 살펴보세요.
           </h2>
           <p>
@@ -197,7 +213,7 @@
             <div>
               <small>01</small>
               <h3>차별화된 추모공간</h3>
-              <p>고급스러운 실내 공간과 방문객을 위한 편의시설</p>
+              <p>고급스러운 실내 공간과 방문객을 위한<br>편의시설</p>
             </div>
           </article>
 
@@ -338,56 +354,43 @@
     <!-- 오른쪽: 예상 수익 카드 및 신청 버튼 -->
     <div class="income-side">
 
-      <div class="cases">
+      
+<div class="cases">
 
-        <!-- 수익 예시 A -->
-        <button
-          class="case active"
-          type="button"
-          data-case="0"
-          aria-pressed="true"
-        >
-          <span>수익 예시 A</span>
+  <!-- 수익 예시 A -->
+  <button
+    type="button"
+    class="case active"
+    data-case="0"
+    aria-pressed="true"
+  >
+    <span>수익 예시 A</span>
+    <small>계약금액</small>
+    <b>500만 원</b>
+    <small class="case-click-guide">
+      눌러서 예상 수익 확인
+    </small>
+  </button>
 
-          <small>계약금액</small>
-          <b>500만 원</b>
+  <!-- 수익 예시 B -->
+  <button
+    type="button"
+    class="case"
+    data-case="1"
+    aria-pressed="false"
+  >
+    <span>수익 예시 B</span>
+    <small>계약금액</small>
+    <b>1,300만 원</b>
+    <small class="case-click-guide">
+      눌러서 예상 수익 확인
+    </small>
+  </button>
 
-          <small>나의 예상 수익</small>
+</div>
 
-          <strong>
-            최대 약 <em>70만 원</em>
-          </strong>
-        </button>
 
-        <!-- 수익 예시 B -->
-        <button
-          class="case"
-          type="button"
-          data-case="1"
-          aria-pressed="false"
-        >
-          <span>수익 예시 B</span>
-
-          <small>계약금액</small>
-          <b>1,300만 원</b>
-
-          <small>나의 예상 수익</small>
-
-          <strong>
-            최대 약 <em>182만 원</em>
-          </strong>
-        </button>
-
-      </div>
-
-      <!-- 선택한 수익 표시 -->
-      <p
-        class="selected-income"
-        id="selectedIncome"
-        aria-live="polite"
-      >
-        선택한 사례 A의 예상 최대 수익은 약 70만 원입니다.
-      </p>
+     
 
       <!-- 파트너 신청 버튼 -->
       <button
@@ -600,6 +603,61 @@
 
   </main>
 
+<!-- 예상 수익 상세 팝업 -->
+<dialog id="incomePopup" aria-labelledby="incomePopupTitle">
+
+  <button
+    type="button"
+    class="income-popup-close"
+    id="incomePopupClose"
+    aria-label="닫기"
+  >
+    ×
+  </button>
+
+  <div class="income-popup-content">
+
+    <p class="income-popup-label" id="incomePopupCase">
+      수익 예시 A
+    </p>
+
+    <p class="income-popup-contract">
+      계약금액 <strong id="incomePopupAmount">500만 원</strong>
+    </p>
+
+    <h2 id="incomePopupTitle">
+      나의 예상 수익
+      <br>
+      <em id="incomePopupReward">최대 약 70만 원</em>
+    </h2>
+
+    <div class="income-popup-symbol" aria-hidden="true">
+      <span>₩</span>
+    </div>
+
+    <p class="income-popup-description">
+      고객 소개로 시작하는<br>
+      새로운 수익 기회!
+    </p>
+
+    <p class="income-popup-notice">
+      ※ 예시 금액이며 실제 수익은 계약 조건 및
+      정산 정책에 따라 달라질 수 있습니다.
+    </p>
+
+    <button
+      type="button"
+      class="income-popup-apply"
+      data-open
+    >
+      파트너 신청하기
+      <span aria-hidden="true">›</span>
+    </button>
+
+  </div>
+</dialog>
+
+
  
 <!-- ======================================
      오른쪽 하단 고정 신청 버튼
@@ -617,22 +675,15 @@
      봉안당 HOME 영업파트너 신청 팝업
 ====================================== -->
 <dialog id="applyDialog" aria-labelledby="dialogTitle">
-
-  <div class="apply-header">
-    <div>
-      <small>HOME PARTNERSHIP</small>
-      <h2 id="dialogTitle">영업파트너 신청</h2>
-      <p>신청 정보를 입력하고 상담을 안내받아 보세요.</p>
-    </div>
-
-    <button
-      type="button"
-      id="closeModal"
-      class="apply-close"
-      aria-label="닫기"
-    >×</button>
+  <!-- 고정 상단: 제목 + 닫기 -->
+  <div class="apply-fixed-header">
+    <h2 id="dialogTitle">영업파트너 신청</h2>
+    <button type="button" id="closeModal" class="apply-close" aria-label="닫기">×</button>
   </div>
 
+  <!-- 신청서 부분만 스크롤 -->
+  <div class="apply-scroll-area">
+    <p class="apply-header-description">신청 정보를 입력하고 상담을 안내받아 보세요.</p>
   <form id="applyForm" novalidate>
     
 
@@ -927,10 +978,9 @@
     <!-- 신청 완료 -->
     <div class="apply-bottom">
 
-      <h3>거의 완료되었어요!</h3>
       <p>
-        신청 정보를 확인하고<br>
-        아래 버튼을 눌러주세요.
+        이제 마지막 단계예요!<br>
+       신청 완료하고 수익의 기회를 시작해 보세요
       </p>
 
       <p
@@ -954,6 +1004,7 @@
     </div>
 
   </form>
+  </div>
 </dialog>
 
 </body>

@@ -2203,9 +2203,10 @@ body {
 }
 
 #applyDialog .apply-bottom > p {
-  margin: 0 0 15px;
-  font-size: 14px;
-  line-height: 1.7;
+    margin: 0 0 15px;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 600;
 }
 
 #applyDialog .apply-message {
@@ -2452,7 +2453,7 @@ body {
   min-height: 70px;
   padding: 16px 20px;
 
-  border: 2px solid #e4e4e9;
+  border: 2px solid #ffbdbd;
   border-radius: 12px;
   background: #fff;
 
@@ -2676,4 +2677,1054 @@ body {
   transform: scale(1);
 }
 
+.section-heading p, .income-heading p {
+    font-size: 20px;
+    line-height: 1.8;
+}
 
+/* =====================================
+   FAQ 메리츠 스타일 폰트
+===================================== */
+
+/* FAQ 제목 */
+.home-faq #home-faq-title {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: clamp(38px, 3.5vw, 52px);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.055em;
+  color: #302a28;
+  word-break: keep-all;
+}
+
+/* FAQ 영문 소제목 */
+.home-faq .home-faq-eyebrow {
+  font-size: 27px;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  color: #f4493d;
+  margin-bottom: 18px;
+}
+
+/* FAQ 질문 */
+.home-faq-item > summary {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: 19px;
+  font-weight: 750;
+  line-height: 1.5;
+  letter-spacing: -0.035em;
+  color: #37302c;
+}
+
+/* FAQ 질문 번호 */
+.home-faq-number {
+  font-size: 18px;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+
+/* FAQ 답변 */
+.home-faq .home-faq-answer p {
+  font-size: 16px;
+  font-weight: 450;
+  line-height: 1.85;
+  letter-spacing: -0.02em;
+}
+
+/* 질문 간격 */
+.home-faq-list {
+  gap: 12px;
+}
+
+/* 질문 카드 높이 */
+.home-faq-item > summary {
+  min-height: 78px;
+  padding: 20px 26px;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .home-faq #home-faq-title {
+    font-size: 34px;
+  }
+
+  .home-faq .home-faq-eyebrow {
+    font-size: 21px;
+  }
+
+  .home-faq-item > summary {
+    min-height: 66px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .home-faq-number {
+    font-size: 15px;
+  }
+
+  .home-faq .home-faq-answer p {
+    font-size: 15px;
+  }
+}
+
+/* FAQ 제목 폰트 및 크기 변경 */
+.home-faq #home-faq-title {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+  color: #302a28;
+}
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  .home-faq #home-faq-title {
+    font-size: 38px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .home-faq #home-faq-title {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+}
+
+/* =====================================
+   예상 수익 카드 클릭 효과
+===================================== */
+
+#income .case {
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#income .case:hover {
+  transform: translateY(-5px);
+  border-color: #f4493d;
+  box-shadow: 0 12px 32px rgba(244,73,61,0.15);
+}
+
+#income .case:focus-visible {
+  outline: 3px solid #f4493d;
+  outline-offset: 4px;
+}
+
+/* =====================================
+   예상 수익 팝업
+===================================== */
+
+#incomePopup,
+#incomePopup * {
+  box-sizing: border-box;
+}
+
+#incomePopup {
+  position: fixed;
+  inset: 0;
+
+  width: min(420px, calc(100vw - 32px));
+  max-width: none;
+  max-height: 90dvh;
+  margin: auto;
+  padding: 38px 30px 30px;
+
+  background: #ffffff;
+  border: none;
+  border-radius: 28px;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.25);
+  color: #292019;
+
+  overflow-y: auto;
+}
+
+#incomePopup:not([open]) {
+  display: none;
+}
+
+#incomePopup[open] {
+  display: block;
+}
+
+#incomePopup::backdrop {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(3px);
+}
+
+/* 닫기 버튼 */
+#incomePopup .income-popup-close {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+
+  width: 34px;
+  height: 34px;
+
+  background: #eeeeee;
+  border: 0;
+  border-radius: 50%;
+  color: #666;
+
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* 내부 정렬 */
+#incomePopup .income-popup-content {
+  text-align: center;
+}
+
+/* 수익 예시 */
+#incomePopup .income-popup-label {
+  display: inline-block;
+  margin: 5px 0 12px;
+  padding: 6px 16px;
+
+  background: #fff4ef;
+  border-radius: 100px;
+  color: #a87b53;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* 계약금액 */
+#incomePopup .income-popup-contract {
+  margin: 0 0 14px;
+  color: #777;
+  font-size: 16px;
+}
+
+#incomePopup .income-popup-contract strong {
+  color: #333;
+}
+
+/* 수익 제목 */
+#incomePopup h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.05em;
+}
+
+#incomePopup h2 em {
+  display: block;
+  color: #f4493d;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+/* 수익 심볼 */
+#incomePopup .income-popup-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 140px;
+  margin: 14px auto 8px;
+
+  border-radius: 35px;
+  background: linear-gradient(145deg, #fff4e9, #ffe1cc);
+}
+
+#incomePopup .income-popup-symbol span {
+  color: #c68b54;
+  font-size: 90px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* 설명 */
+#incomePopup .income-popup-description {
+  margin: 15px 0 8px;
+  color: #302520;
+  font-size: 21px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+/* 유의사항 */
+#incomePopup .income-popup-notice {
+  margin: 0 0 22px;
+  color: #999;
+  font-size: 12px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+/* 신청 버튼 */
+#incomePopup .income-popup-apply {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 62px;
+  padding: 12px;
+
+  background: #f4493d;
+  color: white;
+
+  border: 0;
+  border-radius: 12px;
+
+  font-size: 21px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#incomePopup .income-popup-apply:hover {
+  background: #e53d32;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  #incomePopup {
+    padding: 35px 22px 24px;
+    border-radius: 22px;
+  }
+
+  #incomePopup h2 {
+    font-size: 25px;
+  }
+
+  #incomePopup h2 em {
+    font-size: 31px;
+  }
+
+  #incomePopup .income-popup-symbol {
+    width: 125px;
+    height: 115px;
+  }
+
+  #incomePopup .income-popup-symbol span {
+    font-size: 72px;
+  }
+
+  #incomePopup .income-popup-apply {
+    min-height: 55px;
+    font-size: 18px;
+  }
+}
+
+/* =====================================
+   예상 수익 카드 - 계약금액만 표시
+===================================== */
+
+#income .case {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 28px 15px;
+  cursor: pointer;
+}
+
+#income .case b {
+  font-size: 32px;
+  font-weight: 800;
+  color: #181818;
+}
+
+#income .case .case-click-guide {
+  margin-top: 6px;
+  color: #f4493d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#income .case:hover {
+  border-color: #f4493d;
+  transform: translateY(-4px);
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  #income .case {
+    min-height: 190px;
+    padding: 20px 10px;
+    gap: 12px;
+  }
+
+  #income .case b {
+    font-size: 25px;
+  }
+
+  #income .case .case-click-guide {
+    font-size: 11px;
+    text-align: center;
+  }
+}
+
+/* =====================================
+   신청 팝업 제목 두 줄만 고정
+===================================== */
+
+/* 팝업 전체는 스크롤 */
+#applyDialog {
+  overflow-y: auto;
+  max-height: 90dvh;
+  padding-top: 0;
+}
+
+/* 기존 헤더 전체 고정 해제 */
+#applyDialog .apply-header {
+  display: block;
+  position: static;
+  margin-bottom: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* 제목 두 줄만 고정 */
+#applyDialog .apply-header-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 0 16px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* 상단 영문 문구 */
+#applyDialog .apply-header-fixed small {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #a87b53;
+}
+
+/* 영업파트너 신청 제목 */
+#applyDialog .apply-header-fixed h2 {
+  margin: 8px 0 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #333333;
+}
+
+/* 설명은 일반 스크롤 */
+#applyDialog .apply-header-description {
+  margin: 18px 0 0;
+  font-size: 14px;
+  color: #888888;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  #applyDialog .apply-header-fixed {
+    padding: 16px 0 14px;
+  }
+
+  #applyDialog .apply-header-fixed h2 {
+    font-size: 24px;
+  }
+}
+
+#applyDialog .apply-field input, #applyDialog .apply-field select {
+    width: 100%;
+    height: 54px;
+    padding: 0 16px;
+    background: #f7f8fb;
+    color: #bdbdbe;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 15px;
+}
+#applyDialog .apply-field > label {
+    display: block;
+    margin-bottom: -8px;
+    font-size: 15px;
+    font-weight: 750;
+}
+#applyDialog input:not([type="checkbox"]), #applyDialog select {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    margin: 8px 0 -9px;
+    padding: 10px 12px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333333;
+}
+
+#applyDialog .apply-agreement h3 {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    margin: 0 0 1px;
+    font-size: 15px;
+    font-weight: 750;
+    line-height: 1.6;
+}
+#applyDialog .apply-radio-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    margin: -18px 0 0;
+    padding: 0;
+}
+#applyDialog .apply-agreement {
+    margin-top: 11px;
+}
+#applyDialog .apply-consent-title {
+    margin: 8px 0 10px;
+    font-size: 14px;
+    font-weight: 650;
+}
+#applyDialog .apply-marketing-scroll .apply-consent-title {
+    margin: -9px 0 -8px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+}
+#applyDialog .apply-marketing-scroll .apply-ad-text {
+    margin: 9px 0 -6px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+}
+#applyDialog .apply-marketing-scroll .apply-ad-text {
+    margin: 9px 0 -6px;
+    padding: 0;
+    font-size: 13px;
+    color: #ed4033;
+    font-weight: 400;
+}
+#applyDialog .apply-marketing-scroll .apply-consent-title {
+    margin: -9px 0 -8px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #ee5247;
+}
+#applyDialog .apply-radio-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    margin: -18px 0 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+/* PC 표지는 기존 디자인 유지 */
+.hero .hero-picture {
+  display: block;
+}
+
+/* 모바일 전용 표지 */
+@media (max-width: 650px) {
+
+  .hero {
+    position: relative;
+    height: 100svh;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #050c20;
+  }
+
+  .hero .hero-grid {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 0;
+    aspect-ratio: auto;
+    display: block;
+  }
+
+  /* 이미지가 표지 영역 전체를 채우도록 */
+  .hero .hero-picture {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero .hero-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* 텍스트는 이미지 위쪽에 */
+  .hero .hero-copy {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    padding: 70px 22px 0;
+    margin: 0;
+  }
+
+  /* 제목 */
+  .hero h1 {
+    font-size: clamp(30px, 8vw, 42px);
+    line-height: 1.25;
+    letter-spacing: -0.045em;
+  }
+
+  .hero .hero-partner-text {
+    font-size: 15px;
+    margin-top: 18px;
+  }
+
+  /* 신청 버튼 */
+  .hero .hero-apply-btn {
+    min-width: 195px;
+    min-height: 50px;
+    margin-top: 25px;
+    padding: 12px 22px;
+    font-size: 15px;
+  }
+}
+
+
+/* ===== 신청 팝업 헤더 고정: 최종 단일 적용 규칙 ===== */
+#applyDialog:not([open]) { display: none !important; }
+#applyDialog[open] {
+  position: fixed;
+  inset: 0;
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(700px, calc(100vw - 28px));
+  max-width: none;
+  height: min(90dvh, 900px);
+  max-height: 90dvh;
+  margin: auto;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+  box-sizing: border-box;
+}
+#applyDialog .apply-fixed-header {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 80px;
+  padding: 18px 30px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+#applyDialog .apply-fixed-header h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 800;
+  color: #333;
+}
+#applyDialog .apply-fixed-header #closeModal {
+  position: static;
+  display: flex;
+  flex: 0 0 38px;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #333;
+  font-size: 28px;
+  line-height: 1;
+}
+#applyDialog .apply-scroll-area {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  padding: 24px 30px 32px;
+  box-sizing: border-box;
+}
+#applyDialog .apply-scroll-area > .apply-header-description {
+  margin: 0 0 24px;
+  color: #888;
+  font-size: 14px;
+}
+@media (max-width: 650px) {
+  #applyDialog[open] {
+    width: calc(100vw - 20px);
+    height: 92dvh;
+    max-height: 92dvh;
+  }
+  #applyDialog .apply-fixed-header {
+    min-height: 70px;
+    padding: 16px 20px;
+  }
+  #applyDialog .apply-fixed-header h2 { font-size: 23px; }
+  #applyDialog .apply-scroll-area { padding: 20px; }
+}
+
+/* =========================================
+   봉안당 HOME 메인 표지 반응형 최종 설정
+========================================= */
+
+/* 공통 */
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: calc(100svh - 74px);
+  min-height: 520px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #070f24;
+  color: #fff;
+}
+
+.hero .hero-grid {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* 표지 이미지 */
+.hero .hero-picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  transform: none;
+  border-radius: 0;
+  mask-image: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* 텍스트 가독성 */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 10, 25, 0.48),
+    transparent 70%
+  );
+}
+
+/* 제목 및 버튼 영역 */
+.hero .hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(600px, 58%);
+  margin-left: clamp(30px, 6vw, 120px);
+  padding: 0;
+  transform: none;
+}
+
+/* 메인 제목 */
+.hero #hero-title {
+  margin: 0 0 22px;
+  font-size: clamp(38px, 4.2vw, 64px);
+  font-weight: 800;
+  line-height: 1.23;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+}
+
+.hero #hero-title em {
+  color: #f8ddb8;
+  font-style: normal;
+}
+
+/* 브랜드 문구 */
+.hero .hero-partner-text {
+  margin: 0 0 30px;
+  font-size: clamp(15px, 1.5vw, 21px);
+  line-height: 1.5;
+}
+
+.hero .hero-partner-text strong {
+  font-weight: 800;
+}
+
+.hero .partner-text {
+  font-size: 0.75em;
+}
+
+/* 신청 버튼 */
+.hero .hero-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-width: 220px;
+  min-height: 56px;
+  margin: 0;
+  padding: 12px 26px;
+
+  font-size: 17px;
+  font-weight: 800;
+  border-radius: 13px;
+  background: #f4493d;
+  color: #fff;
+}
+
+.hero .btn-arrow {
+  width: 12px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* =========================================
+   태블릿
+========================================= */
+
+@media (min-width: 651px) and (max-width: 1199px) {
+  .hero .hero-copy {
+    width: 62%;
+    margin-left: 5%;
+  }
+
+  .hero #hero-title {
+    font-size: clamp(34px, 4vw, 48px);
+  }
+
+  .hero .hero-partner-text {
+    font-size: 17px;
+  }
+
+  .hero .hero-apply-btn {
+    min-width: 190px;
+    min-height: 50px;
+    font-size: 15px;
+  }
+}
+
+/* =========================================
+   모바일
+========================================= */
+
+@media (max-width: 650px) {
+  .hero {
+    height: calc(100svh - 62px);
+    min-height: 580px;
+  }
+
+  .hero .hero-grid {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .hero .hero-picture {
+    inset: 0;
+  }
+
+  /* 모바일 전용 사진 */
+  .hero .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  .hero::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(3, 8, 22, 0.22) 0%,
+      transparent 55%
+    );
+  }
+
+  /* 모바일 텍스트 위치 */
+  .hero .hero-copy {
+    position: absolute;
+    top: clamp(36px, 7vh, 75px);
+    left: 0;
+
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    padding: 0;
+    transform: none;
+  }
+
+  /* 모바일 제목 */
+  .hero #hero-title {
+    font-size: clamp(28px, 7.2vw, 38px);
+    line-height: 1.28;
+    letter-spacing: -0.055em;
+    margin-bottom: 15px;
+  }
+
+  /* 모바일 브랜드 */
+  .hero .hero-partner-text {
+    font-size: clamp(14px, 3.7vw, 17px);
+    margin-bottom: 22px;
+  }
+
+  /* 모바일 신청 버튼 */
+  .hero .hero-apply-btn {
+    min-width: 175px;
+    min-height: 48px;
+    padding: 11px 20px;
+    font-size: 14px;
+    border-radius: 11px;
+  }
+}
+
+/* 작은 모바일 */
+@media (max-width: 375px) {
+  .hero .hero-copy {
+    width: calc(100% - 32px);
+    margin: 0 16px;
+  }
+
+  .hero #hero-title {
+    font-size: 27px;
+  }
+
+  .hero .hero-apply-btn {
+    min-width: 165px;
+  }
+}
+
+
+/* ====================================
+   내부 콘텐츠 공통 가로 정렬
+==================================== */
+
+/* 전체 콘텐츠 기준 너비 */
+.container {
+  width: calc(100% - 48px);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 모든 요소 너비 계산 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 메인 표지는 기존 설정 유지 */
+
+/* ====================================
+   N잡 소개 섹션 정렬 수정
+==================================== */
+
+.intro .intro-grid {
+  width: calc(100% - 48px);
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  align-items: center;
+  gap: clamp(20px, 4vw, 60px);
+}
+
+/* 왼쪽 텍스트 */
+.intro .intro-copy {
+  position: relative;
+  left: auto;
+  right: auto;
+  transform: none;
+
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* 오른쪽 로고 영역 */
+.intro .intro-logo-stage {
+  position: relative;
+  left: auto;
+  right: auto;
+  transform: none;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  .intro .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .intro .intro-copy {
+    text-align: center;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .container,
+  .intro .intro-grid {
+    width: calc(100% - 32px);
+  }
+}

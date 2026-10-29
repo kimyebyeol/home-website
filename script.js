@@ -378,5 +378,93 @@ document.querySelectorAll(
   });
 });
 
+// =====================================
+// 6. 예상 수익 팝업
+// =====================================
+
+const incomePopup = document.getElementById("incomePopup");
+const incomePopupClose =
+  document.getElementById("incomePopupClose");
+
+const incomePopupCase =
+  document.getElementById("incomePopupCase");
+
+const incomePopupAmount =
+  document.getElementById("incomePopupAmount");
+
+const incomePopupReward =
+  document.getElementById("incomePopupReward");
+
+// 계약금액별 예상 수익
+const incomePopupData = [
+  {
+    caseName: "A",
+    amount: "500만 원",
+    reward: "최대 약 70만 원"
+  },
+  {
+    caseName: "B",
+    amount: "1,300만 원",
+    reward: "최대 약 182만 원"
+  }
+];
+
+// 기존 예상 수익 카드 클릭 시 팝업 열기
+document.querySelectorAll("#income [data-case]").forEach(card => {
+  card.addEventListener("click", () => {
+    if (!incomePopup) return;
+
+    const index = Number(card.dataset.case);
+    const data = incomePopupData[index];
+
+    if (!data) return;
+
+    incomePopupCase.textContent =
+      `수익 예시 ${data.caseName}`;
+
+    incomePopupAmount.textContent = data.amount;
+    incomePopupReward.textContent = data.reward;
+
+    if (!incomePopup.open) {
+      incomePopup.showModal();
+    }
+  });
+});
+
+// 팝업 닫기
+incomePopupClose?.addEventListener("click", () => {
+  incomePopup.close();
+});
+
+// 팝업 바깥 클릭 시 닫기
+incomePopup?.addEventListener("click", event => {
+  if (event.target !== incomePopup) return;
+
+  const rect = incomePopup.getBoundingClientRect();
+
+  const outside =
+    event.clientX < rect.left ||
+    event.clientX > rect.right ||
+    event.clientY < rect.top ||
+    event.clientY > rect.bottom;
+
+  if (outside) {
+    incomePopup.close();
+  }
+});
+
+// 수익 팝업에서 파트너 신청 버튼 클릭
+incomePopup
+  ?.querySelector(".income-popup-apply")
+  ?.addEventListener("click", () => {
+    incomePopup.close();
+
+    const applyDialog = document.getElementById("applyDialog");
+
+    if (applyDialog && !applyDialog.open) {
+      applyDialog.showModal();
+    }
+  });
+
 
 });
