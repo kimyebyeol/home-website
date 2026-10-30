@@ -6709,3 +6709,92 @@ body {
     border-bottom: none;
   }
 }
+
+/* ==========================================
+   모바일 섹션 여백 최적화
+   650px 이하
+========================================== */
+
+@media (max-width: 650px) {
+
+  /* 공통 섹션 여백 */
+  .section {
+    padding-top: 55px !important;
+    padding-bottom: 55px !important;
+  }
+
+  /* 공간 소개 */
+  #spaces {
+    padding-top: 45px !important;
+    padding-bottom: 50px !important;
+  }
+
+  #spaces .section-heading {
+    margin-bottom: 28px !important;
+  }
+
+  #spaces .section-heading h2 {
+    margin: 0 0 16px !important;
+    font-size: clamp(27px, 7vw, 34px) !important;
+    line-height: 1.35 !important;
+  }
+
+  #spaces .section-heading p {
+    margin: 0 !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  #spaces .space-cards {
+    margin-top: 25px !important;
+    gap: 16px !important;
+  }
+
+  /* 예상 수익 섹션 */
+  #profit.home-profit {
+    min-height: auto !important;
+    height: auto !important;
+
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+
+  #profit .home-profit__inner {
+    min-height: 0 !important;
+    gap: 24px !important;
+  }
+
+  #profit .home-profit__left,
+  #profit .home-profit__right {
+    min-height: 0 !important;
+  }
+
+  /* Q&A 섹션 */
+  #faq.home-faq {
+    min-height: auto !important;
+    height: auto !important;
+
+    padding-top: 50px !important;
+    padding-bottom: 55px !important;
+  }
+
+  #faq .home-faq-inner {
+    min-height: 0 !important;
+  }
+
+  #faq .home-faq-heading {
+    margin-top: 0 !important;
+    margin-bottom: 25px !important;
+  }
+
+  #faq .home-faq-heading h2 {
+    margin: 0 !important;
+    font-size: clamp(26px, 7vw, 34px) !important;
+    line-height: 1.35 !important;
+  }
+
+  #faq .home-faq-list {
+    margin-top: 0 !important;
+  }
+}
+
