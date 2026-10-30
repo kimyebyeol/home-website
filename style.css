@@ -162,11 +162,7 @@ a {
   gap: 30px;
   min-height: 270px;
 }
-.intro-grid img {
-  width: 100%;
-  height: 300px;
-  object-fit: contain;
-}
+
 .intro h2,
 .section-heading h2,
 .income h2 {
@@ -927,7 +923,7 @@ select:focus {
 /* FAQ 콘텐츠 너비 */
 .home-faq-inner {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
@@ -1770,7 +1766,7 @@ body {
   line-height: 1.25;
 }
 .intro.intro-motion .intro-copy p {
-        margin-top: 30px;
+        margin-top: 24px;
     color: #6c6c6c;
     font-family: Pretendard;
     font-size: 26px;
@@ -2770,7 +2766,7 @@ body {
 /* FAQ 제목 폰트 및 크기 변경 */
 .home-faq #home-faq-title {
   font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  font-size: 44px;
+  font-size: 52px;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.05em;
@@ -3727,4 +3723,2882 @@ body {
   .intro .intro-grid {
     width: calc(100% - 32px);
   }
+}
+
+/* =====================================
+   파트너 혜택 섹션 콘텐츠 위로 이동
+===================================== */
+
+/* 제목 + 카드 전체를 위로 이동 */
+.benefits > .container {
+  position: relative;
+  transform: translateY(-100px);
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .benefits > .container {
+    transform: translateY(-60px);
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .benefits > .container {
+    transform: none;
+  }
+}
+.section-heading h2, .income h2 {
+    font-size: clamp(36px, 3.8vw, 52px);
+    line-height: 1.3;
+    margin-bottom: 45px;
+}
+.feature p {
+    font-size: 16px;
+    line-height: 1.25;
+    margin-top: 4px;
+    font-weight: 550;
+    color: #292624;
+}
+
+/* 파트너 혜택 카드 3개 가로폭 통일 */
+.benefits .three {
+  grid-template-columns: repeat(3, minmax(0, 320px));
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 650px) {
+  .benefits .three {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* =====================================
+   파트너 혜택 카드 전체 크기 확대
+===================================== */
+
+/* 카드 3개 배치 */
+.benefits .three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 카드 크기 */
+.benefits .feature {
+  width: 100%;
+  min-width: 0;
+  min-height: 300px;
+
+  padding: 28px 22px 30px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 아이콘 크기 */
+.benefits .feature img {
+  display: block;
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+
+/* 카드 제목 */
+.benefits .feature h3 {
+  font-size: 21px;
+  font-weight: 800;
+  margin: 8px 0;
+}
+
+/* 카드 설명 */
+.benefits .feature p {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .benefits .feature {
+    min-height: 270px;
+    padding: 22px 14px;
+  }
+
+  .benefits .feature img {
+    height: 145px;
+  }
+
+  .benefits .feature p {
+    font-size: 14px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .benefits .three {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .benefits .feature {
+    min-height: 250px;
+    padding: 22px 16px;
+  }
+
+  .benefits .feature img {
+    height: 145px;
+  }
+
+  .benefits .feature p {
+    font-size: 15px;
+  }
+}
+/* 카드 안 이미지 공통 크기 */
+.benefits .feature img {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+
+  /* 애니메이션 */
+  animation: benefitFloat 1s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* 위아래로 부드럽게 움직이는 애니메이션 */
+@keyframes benefitFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.benefits .feature p {
+    font-size: 17px;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 10px;
+}.section-heading h2, .income h2 {
+    font-size: clamp(36px, 3.8vw, 52px);
+    line-height: 1.3;
+    margin-bottom: 24px;
+}
+.section-heading p, .income-heading p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+/* STEP 02 전문 상담사 배지 색상 변경 */
+.steps-section .step:nth-child(2) .tag {
+  background-color: #F26F70;
+  color: #ffffff;
+}
+
+
+/* =====================================
+   파트너 혜택 3D 아이콘 애니메이션
+   동시에 시작 / 동시에 종료 / 반복 없음
+===================================== */
+
+/* 공통 설정 */
+.benefits .feature img {
+  animation: none !important;
+  transform: none;
+  transform-origin: center center;
+}
+
+/* 섹션 진입 시 세 이미지 동시에 시작 */
+.benefits.animate-once .feature:nth-child(1) img {
+  animation: benefitClock 2.5s ease-in-out 0s 1 both !important;
+}
+
+.benefits.animate-once .feature:nth-child(2) img {
+  animation: benefitFolder 2.5s ease-in-out 0s 1 both !important;
+}
+
+.benefits.animate-once .feature:nth-child(3) img {
+  animation: benefitPhone 2.5s ease-in-out 0s 1 both !important;
+}
+
+/* 01. 시계 - 좌우 흔들림 */
+@keyframes benefitClock {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+
+  18% {
+    transform: rotate(-8deg);
+  }
+
+  36% {
+    transform: rotate(8deg);
+  }
+
+  54% {
+    transform: rotate(-5deg);
+  }
+
+  72% {
+    transform: rotate(5deg);
+  }
+}
+
+/* 02. 폴더 - 아래에서 위로 떠오르기 */
+@keyframes benefitFolder {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  35% {
+    transform: translateY(-16px);
+  }
+
+  65% {
+    transform: translateY(-9px);
+  }
+}
+
+/* 03. 휴대폰 - 확대와 기울임 */
+@keyframes benefitPhone {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1.07) rotate(-6deg);
+  }
+
+  60% {
+    transform: scale(1.04) rotate(5deg);
+  }
+}
+
+/* 움직임 최소화 설정 */
+@media (prefers-reduced-motion: reduce) {
+  .benefits.animate-once .feature img {
+    animation: none !important;
+  }
+}
+/* 세 아이콘 애니메이션 지속 시간 3.5초 */
+.benefits.animate-once .feature:nth-child(1) img,
+.benefits.animate-once .feature:nth-child(2) img,
+.benefits.animate-once .feature:nth-child(3) img {
+  animation-duration: 3.5s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: both !important;
+}
+
+/* =====================================
+   활동 방식 - 미니멀 디자인
+===================================== */
+
+.steps-section {
+  background: #fafafa;
+  padding: 75px 0 85px;
+}
+
+.steps-section .container {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* 상단 제목 */
+.steps-section .section-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.steps-section .steps-eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: #777;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.steps-section .section-heading h2 {
+  margin: 0 0 18px;
+  color: #222;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+}
+
+.steps-section .section-heading p {
+  margin: 0;
+  color: #777;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.steps-section .steps-subdescription {
+  margin-top: 12px !important;
+}
+
+/* 카드 3개 */
+.steps-section .steps-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* 개별 카드 */
+.steps-section .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 360px;
+
+  padding: 25px 18px 30px;
+
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+  box-shadow: none;
+
+  text-align: center;
+}
+
+/* 카드 상단 이미지 */
+.steps-section .step > img {
+  order: 1;
+  display: block;
+  width: 110px;
+  height: 95px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+}
+
+/* 역할 배지 */
+.steps-section .step > .tag {
+  order: 2;
+  display: inline-block;
+
+  margin: 0 0 15px;
+  padding: 5px 16px;
+
+  background: #f5f5f5 !important;
+  border-radius: 30px;
+
+  color: #333;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* STEP 번호 */
+.steps-section .step > small {
+  order: 3;
+  display: block;
+
+  margin-bottom: 6px;
+  color: #999;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* 카드 제목 */
+.steps-section .step > h3 {
+  order: 4;
+  margin: 0 0 22px;
+
+  color: #222;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* 카드 하단 내용 */
+.steps-section .step > ul {
+  order: 5;
+
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  text-align: center;
+}
+
+.steps-section .step > ul li {
+  margin: 0 0 16px;
+  color: #777;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* 기존 체크 표시 제거 */
+.steps-section .step > ul li::before {
+  display: none;
+}
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  .steps-section .step {
+    min-height: 330px;
+    padding: 22px 10px;
+  }
+
+  .steps-section .step > img {
+    width: 90px;
+    height: 85px;
+  }
+
+  .steps-section .step > h3 {
+    font-size: 17px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .steps-section {
+    padding: 55px 0;
+  }
+
+  .steps-section .container {
+    width: calc(100% - 32px);
+  }
+
+  .steps-section .steps-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .steps-section .step {
+    min-height: 300px;
+  }
+
+  .steps-section .section-heading h2 {
+    font-size: 30px;
+  }
+
+  .steps-section .section-heading p {
+    font-size: 14px;
+  }
+}
+
+/* =====================================
+   STEP 01 고객 소개 카드 강조
+===================================== */
+
+/* 첫 번째 카드 */
+.steps-section .step:first-child {
+  background: #fffdf9;
+  border: 2px solid #b18452;
+  box-shadow: 0 12px 30px rgba(139, 92, 56, 0.12);
+}
+
+/* STEP 01 영업파트너 배지 */
+.steps-section .step:first-child .tag {
+  background: #b18452 !important;
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+/* STEP 01 번호 */
+.steps-section .step:first-child > small {
+  color: #b18452;
+  font-weight: 700;
+}
+
+/* 고객 소개 제목 */
+.steps-section .step:first-child > h3 {
+  font-size: 23px;
+  font-weight: 850;
+  color: #292019;
+}
+
+/* 고객 소개 아이콘 */
+.steps-section .step:first-child > img {
+  width: 125px;
+  height: 105px;
+}
+
+/* 첫 번째 카드 설명 */
+.steps-section .step:first-child > ul li {
+  color: #514036;
+  font-weight: 600;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .steps-section .step:first-child > h3 {
+    font-size: 21px;
+  }
+}
+.steps-section .step:nth-child(2) .tag {
+    background-color: #F26F70;
+    color: #333333;
+}
+
+/* =====================================
+   예상 수익 팝업 이미지 변경
+===================================== */
+
+/* 기존 원화 아이콘 배경 제거 */
+#incomePopup .income-popup-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 180px;
+  height: 160px;
+  margin: 15px auto 12px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* 새 PNG 이미지 */
+#incomePopup .income-popup-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  #incomePopup .income-popup-symbol {
+    width: 150px;
+    height: 140px;
+  }
+}
+
+/* =====================================
+   공간 소개 카드 이미지 최종 조정
+===================================== */
+
+/* 카드 3개 정렬 */
+#spaces .space-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* 카드 전체 */
+#spaces .space {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  height: 100%;
+
+  background: #ffffff;
+  border: 1px solid #ebe5de;
+  border-radius: 18px;
+  overflow: hidden;
+
+  box-shadow: 0 5px 18px rgba(50, 30, 15, 0.04);
+}
+
+/* 모든 사진 영역 동일한 높이 */
+#spaces .space-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f6f0e9;
+}
+
+/* 이미지 공통 */
+#spaces .space-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+
+  object-fit: cover;
+  object-position: center center;
+
+  transition: transform 0.5s ease;
+}
+
+/* 01. 추모공간 - 실내 전체 중심 */
+#spaces .space-image-01 img {
+  object-position: center 52%;
+}
+
+/* 02. 홈북 - 제품 중앙 강조 */
+#spaces .space-image-02 img {
+  object-position: center 45%;
+}
+
+/* 03. 건물 - 건물 중심 */
+#spaces .space-image-03 img {
+  object-position: center 50%;
+}
+
+/* 사진에 마우스 올리면 부드럽게 확대 */
+@media (hover: hover) {
+  #spaces .space:hover .space-image img {
+    transform: scale(1.035);
+  }
+}
+
+/* 카드 텍스트 영역 */
+#spaces .space-content {
+  flex: 1;
+  padding: 22px 24px 26px;
+}
+
+#spaces .space-content small {
+  color: #b28c70;
+  font-size: 13px;
+}
+
+#spaces .space-content h3 {
+  margin: 12px 0 10px;
+  font-size: 21px;
+  font-weight: 750;
+  color: #292019;
+}
+
+#spaces .space-content p {
+  margin: 0;
+  color: #81766d;
+  font-size: 15px;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  #spaces .space-cards {
+    gap: 14px;
+  }
+
+  #spaces .space-image {
+    height: 190px;
+  }
+
+  #spaces .space-content {
+    padding: 20px 16px 24px;
+  }
+
+  #spaces .space-content h3 {
+    font-size: 18px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  #spaces .space-cards {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  #spaces .space-image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  #spaces .space-content {
+    padding: 20px;
+  }
+
+  #spaces .space-content h3 {
+    font-size: 20px;
+  }
+
+  #spaces .space-content p {
+    font-size: 14px;
+  }
+}
+
+/* 움직임 최소화 */
+@media (prefers-reduced-motion: reduce) {
+  #spaces .space-image img {
+    transition: none;
+  }
+}
+#spaces .space-image-02 img {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* =====================================
+   공간 소개 02 - 홈북 이미지 잘림 방지
+===================================== */
+
+#spaces .space-image-02 {
+  height: 220px;
+  background: #f6eee5;
+  overflow: hidden;
+}
+
+#spaces .space-image-02 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center;
+  transform: none;
+}
+
+/* =====================================
+   공간 소개 카드 3개 그림자 완전 제거
+===================================== */
+
+/* 카드 그림자 제거 */
+#spaces .space {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* 마우스 올렸을 때도 그림자 제거 */
+#spaces .space:hover {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* 카드 이미지 그림자 제거 */
+#spaces .space img {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* ========================================
+   HOME 예상 수익 섹션
+======================================== */
+
+.home-profit {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 100px 30px;
+}
+
+.home-profit *,
+.home-profit *::before,
+.home-profit *::after {
+  box-sizing: border-box;
+}
+
+.home-profit__inner {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 80px;
+}
+
+/* 왼쪽 콘텐츠 */
+.home-profit__left {
+  min-width: 0;
+}
+
+.home-profit__title {
+  margin: 0;
+  font-size: clamp(40px, 4vw, 66px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.055em;
+  color: #271d18;
+}
+
+.home-profit__title span {
+  color: #e6544b;
+}
+
+.home-profit__description {
+  margin: 35px 0 0;
+  font-size: clamp(15px, 1.4vw, 21px);
+  line-height: 1.7;
+  color: #77716d;
+  word-break: keep-all;
+}
+
+.home-profit__visual {
+  width: 100%;
+  margin-top: 42px;
+}
+
+.home-profit__visual img {
+  display: block;
+  width: 100%;
+  max-width: 530px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 오른쪽 */
+.home-profit__right {
+  width: 100%;
+  min-width: 0;
+}
+
+.home-profit__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* 수익 카드 */
+.home-profit__card {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 100%;
+  min-height: 375px;
+  padding: 35px 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  text-align: center;
+  font-family: inherit;
+  color: #191919;
+
+  background: #fff;
+  border: 2px solid #f0ece9;
+  border-radius: 25px;
+
+  box-shadow: 0 10px 35px rgba(70, 40, 25, 0.045);
+  cursor: pointer;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.home-profit__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(70, 40, 25, 0.08);
+}
+
+.home-profit__card.is-active {
+  border-color: #ef9b94;
+}
+
+.home-profit__card:focus-visible {
+  outline: 3px solid #e6544b;
+  outline-offset: 4px;
+}
+
+/* 카드 제목 */
+.home-profit__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  padding: 8px 22px;
+
+  border-radius: 50px;
+  background: #fcf4f0;
+
+  font-size: 17px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* 작은 설명 */
+.home-profit__label {
+  display: block;
+  margin-top: 19px;
+  font-size: 18px;
+  color: #938c87;
+}
+
+/* 계약금액 */
+.home-profit__amount {
+  display: block;
+  margin: 24px 0 5px;
+
+  font-size: clamp(27px, 2.3vw, 40px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+/* 예상 수익 */
+.home-profit__earning {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  margin-top: 22px;
+  white-space: nowrap;
+}
+
+.home-profit__earning small {
+  font-size: 19px;
+  font-weight: 700;
+  color: #161616;
+}
+
+.home-profit__earning strong {
+  font-size: clamp(27px, 2.5vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #e6544b;
+  letter-spacing: -0.055em;
+}
+
+/* 결과 안내 */
+.home-profit__result {
+  margin: 30px 0 27px;
+  text-align: center;
+
+  font-size: 19px;
+  line-height: 1.6;
+  color: #615954;
+  word-break: keep-all;
+}
+
+.home-profit__result strong {
+  font-weight: 800;
+  color: #493a32;
+}
+
+/* 신청 버튼 */
+.home-profit__apply {
+  width: 100%;
+  min-height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  background: #e6544b;
+  border-radius: 16px;
+
+  color: #fff;
+  font-size: 21px;
+  font-weight: 800;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+    margin-top: 18px;
+}
+
+.home-profit__apply:hover {
+  background: #d7443b;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.home-profit__apply span {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* 안내 문구 */
+.home-profit__notice {
+  margin: 18px 0 0;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+  color: #99918c;
+  word-break: keep-all;
+}
+
+/* ========================================
+   태블릿
+======================================== */
+
+@media (max-width: 1100px) {
+  .home-profit {
+    padding: 80px 24px;
+  }
+
+  .home-profit__inner {
+    gap: 35px;
+  }
+
+  .home-profit__card {
+    min-height: 340px;
+    padding: 28px 12px;
+  }
+
+  .home-profit__tag {
+    font-size: 15px;
+  }
+
+  .home-profit__label {
+    font-size: 15px;
+  }
+
+  .home-profit__earning small {
+    font-size: 15px;
+  }
+}
+
+/* ========================================
+   모바일
+======================================== */
+
+@media (max-width: 768px) {
+  .home-profit {
+    padding: 70px 20px;
+  }
+
+  .home-profit__inner {
+    display: flex;
+    flex-direction: column;
+   align-items: start;
+    gap: 36px;
+  }
+
+  .home-profit__title {
+    font-size: clamp(36px, 9vw, 48px);
+  }
+
+  .home-profit__description {
+    margin-top: 22px;
+    font-size: 15px;
+  }
+
+  .home-profit__visual {
+    margin-top: 25px;
+  }
+
+  .home-profit__visual img {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .home-profit__cards {
+    gap: 12px;
+  }
+
+  .home-profit__card {
+    min-height: 285px;
+    padding: 24px 8px;
+    border-radius: 18px;
+  }
+
+  .home-profit__tag {
+    min-height: 34px;
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+
+  .home-profit__label {
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  .home-profit__amount {
+    margin-top: 20px;
+    font-size: clamp(19px, 5.1vw, 27px);
+  }
+
+  .home-profit__earning {
+    margin-top: 18px;
+    gap: 4px;
+  }
+
+  .home-profit__earning small {
+    font-size: 12px;
+  }
+
+  .home-profit__earning strong {
+    font-size: clamp(20px, 5.3vw, 30px);
+  }
+
+  .home-profit__result {
+    margin: 25px 0 20px;
+    font-size: 14px;
+  }
+
+  .home-profit__apply {
+    min-height: 58px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+
+  .home-profit__notice {
+    font-size: 11px;
+  }
+}
+
+/* 아주 작은 모바일 */
+@media (max-width: 360px) {
+  .home-profit {
+    padding-inline: 12px;
+  }
+
+  .home-profit__cards {
+    gap: 8px;
+  }
+
+  .home-profit__card {
+    padding-inline: 4px;
+  }
+
+  .home-profit__amount {
+    font-size: 18px;
+  }
+
+  .home-profit__earning strong {
+    font-size: 19px;
+  }
+}
+.home-profit__title {
+    margin: 0;
+    font-size: clamp(36px, 3.8vw, 52px);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.055em;
+    color: #271d18;
+}
+.home-profit__description {
+  margin-top: 30px;
+  color: #6c6c6c;
+  font-family: Pretendard;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: 38px;
+}
+
+/* =====================================
+   예상 수익 섹션 왼쪽 텍스트 상단 정렬
+===================================== */
+
+/* 왼쪽과 오른쪽 영역 상단 맞추기 */
+@media (min-width: 1025px) {
+  #income .income-grid {
+    align-items: start !important;
+  }
+
+  /* 왼쪽 콘텐츠 시작 위치 */
+  #income .income-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    align-self: start;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  /* 제목을 오른쪽 카드 상단에 맞춤 */
+  #income .income-heading h2 {
+    margin: 0 0 24px !important;
+    line-height: 1.2;
+  }
+
+  /* 설명과 제목 사이 간격 */
+  #income .income-description {
+    margin: 0 0 35px !important;
+    line-height: 1.5;
+  }
+
+  /* 꽃·동전 이미지는 제목 아래 배치 */
+  #income .income-flower-coins {
+    margin-top: 10px;
+  }
+
+  /* 오른쪽 카드 위치 유지 */
+  #income .income-side {
+    align-self: start;
+    margin-top: 0;
+  }
+}
+
+/* 예상 수익 섹션 PC 상단 정렬 */
+@media (min-width: 1025px) {
+
+  .home-profit .home-profit__inner {
+    align-items: start !important;
+  }
+
+  .home-profit .home-profit__left {
+    align-self: start !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  .home-profit .home-profit__title {
+    margin-top: 0 !important;
+  }
+
+  .home-profit .home-profit__right {
+    align-self: start !important;
+    margin-top: 0 !important;
+  }
+}
+.home-profit__visual {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+}
+@media (min-width: 1025px) {
+  #income .income-flower-coins {
+    width: 100% !important;
+    max-width: 530px !important;
+    max-height: 300px !important;
+    object-fit: contain !important;
+  }
+}
+
+/* =====================================
+   예상 수익 이미지 사방 그라데이션
+   상하좌우 자연스럽게 흰 배경과 연결
+===================================== */
+
+.home-profit__visual {
+  position: relative;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* 이미지 전체에 사방 페이드 적용 */
+.home-profit__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+
+  -webkit-mask-composite: source-in;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 82%,
+      transparent 100%
+    );
+
+  mask-composite: intersect;
+}
+
+/* 기존 좌우 블러 레이어 제거 */
+.home-profit__visual::before,
+.home-profit__visual::after {
+  content: none !important;
+}
+
+/* =====================================
+   예상 수익 카드 신규 디자인
+===================================== */
+
+.home-profit__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* 카드 */
+.home-profit__card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  min-width: 0;
+  min-height: 390px;
+  padding: 32px 16px !important;
+  gap: 0 !important;
+
+  background: #fff !important;
+  border: 2px solid #e6544b  !important;
+  border-radius: 24px !important;
+
+  text-align: center;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* 선택한 카드 */
+.home-profit__card.is-active {
+  border-color: #fa786e !important;
+}
+
+/* 상단 배지 */
+.home-profit__card .home-profit__tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 25px;
+  border-radius: 50px;
+
+  background: #fff1e9;
+  color: #292019;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* 선택된 카드 배지 */
+.home-profit__card.is-active .home-profit__tag {
+  background: #f4493d;
+  color: #fff;
+}
+
+/* 사람 / 그룹 아이콘 */
+.home-profit__icon {
+  width: 105px;
+  height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 25px auto 22px;
+  border-radius: 50%;
+
+  background: #fff1e7;
+  color: #f05b3e;
+}
+
+.home-profit__icon svg {
+  width: 64px;
+  height: 64px;
+}
+
+/* 수수료 안내 */
+.home-profit__commission-label {
+  display: block;
+  margin-bottom: 12px;
+  color: #292019;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+/* 수수료 금액 */
+.home-profit__commission {
+  display: block;
+  color: #ef4d3f;
+  font-size: clamp(34px, 3.5vw, 50px);
+  font-weight: 850;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .home-profit__card {
+    min-height: 330px;
+    padding: 25px 12px !important;
+  }
+
+  .home-profit__commission {
+    font-size: 36px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .home-profit__cards {
+    gap: 12px;
+  }
+
+  .home-profit__card {
+    min-height: 275px;
+    padding: 20px 8px !important;
+    border-radius: 18px !important;
+  }
+
+  .home-profit__card .home-profit__tag {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+
+  .home-profit__icon {
+    width: 72px;
+    height: 72px;
+    margin: 18px auto;
+  }
+
+  .home-profit__icon svg {
+    width: 45px;
+    height: 45px;
+  }
+
+  .home-profit__commission-label {
+    font-size: 13px;
+  }
+
+  .home-profit__commission {
+    font-size: clamp(22px, 5vw, 32px);
+  }
+}
+
+/* =====================================
+   예상 수익 카드 색상 최종 설정
+===================================== */
+
+/* 기본형 A - 흰색 배경 유지 */
+.home-profit__card[data-profit="a"],
+.home-profit__card[data-profit="a"].is-active {
+  background: #ffffff !important;
+}
+
+/* 프리미엄 A - 연한 아이보리 배경 */
+.home-profit__card[data-profit="b"],
+.home-profit__card[data-profit="b"].is-active,
+.home-profit__card[data-profit="b"]:hover,
+.home-profit__card[data-profit="b"]:active {
+  background: #fff5f5 !important;
+}
+
+/* 기본형 A 배지 - 베이지 고정 */
+.home-profit__card[data-profit="a"] .home-profit__tag {
+  background: #fff0e7 !important;
+  color: #292019 !important;
+}
+
+/* 프리미엄 A 배지 - 빨간색 고정 */
+.home-profit__card[data-profit="b"] .home-profit__tag {
+  background: #f4493d !important;
+  color: #ffffff !important;
+}
+
+/* 선택해도 카드 테두리 색상 고정 */
+.home-profit__card[data-profit="a"],
+.home-profit__card[data-profit="a"].is-active {
+  border-color: #eee8e4 !important;
+}
+
+.home-profit__card[data-profit="b"],
+.home-profit__card[data-profit="b"].is-active {
+  border-color: #f4493d !important;
+}
+
+/* 기본형 A - 흰색 배경 */
+.home-profit__card[data-profit="a"] {
+  background: #ffffff !important;
+  border: 2px solid #eee8e4 !important;
+}
+
+/* 프리미엄 A - 연한 아이보리 */
+.home-profit__card[data-profit="b"] {
+  background: #fdfcfa !important;
+  border: 2px solid #f4493d !important;
+}
+
+/* 프리미엄 A 배지 고정 */
+.home-profit__card[data-profit="b"] .home-profit__tag {
+  background: #f4493d !important;
+  color: #ffffff !important;
+}
+
+/* 클릭 및 호버 효과 제거 */
+.home-profit__card,
+.home-profit__card:hover,
+.home-profit__card:active {
+  cursor: default !important;
+  transform: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+/* =========================================
+   04. 활동 방식 - 신규 디자인
+========================================= */
+
+/* 섹션 전체 */
+#steps.steps-section {
+  background: #ffffff;
+  padding: 75px 0 90px;
+}
+
+#steps .steps-container {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* 제목 */
+#steps .steps-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+#steps .steps-eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: #a9a3a0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#steps .steps-heading h2 {
+  margin: 0;
+  font-size: clamp(32px, 3.5vw, 52px);
+  line-height: 1.3;
+  letter-spacing: -0.055em;
+  color: #292019;
+  font-size: clamp(36px, 3.8vw, 52px);
+    line-height: 1.3;
+    margin-bottom: 24px;
+}
+
+#steps .steps-heading em {
+  color: #f4493d;
+  font-style: normal;
+}
+
+/* 3개 카드와 화살표 */
+#steps .steps-flow {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) 18px
+    minmax(0, 1fr) 18px
+    minmax(0, 1fr);
+  align-items: stretch;
+  gap: 8px;
+}
+
+/* 카드 공통 */
+#steps .steps-flow > .step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-width: 0;
+  min-height: 335px;
+  padding: 25px 14px 20px;
+
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 15px;
+
+  text-align: center;
+  box-shadow: 0 5px 24px rgba(60, 40, 30, 0.035);
+}
+
+/* STEP 01 강조 */
+#steps .steps-flow > .step-primary {
+  border: 2px solid #ff6b5c;
+  background: #fffaf8;
+  padding: 24px 13px 19px;
+}
+
+/* 역할 배지 */
+#steps .step-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 30px;
+  margin: 0 0 12px;
+  padding: 5px 20px;
+
+  border-radius: 30px;
+  background: #ff665a;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 750;
+}
+
+/* STEP 02 / 03 배지 */
+#steps .step-tag-muted {
+  background: #f4f2f0;
+  color: #55504d;
+}
+
+/* 단계 표시 */
+#steps .step small {
+  display: block;
+  margin: 0 0 5px;
+
+  color: #a49b96;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+/* 카드 제목 */
+#steps .step h3 {
+  margin: 0 0 12px;
+  color: #292019;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+/* 3D 아이콘 */
+#steps .step > img {
+  display: block;
+  order: initial;
+
+  width: 100%;
+  max-width: 210px;
+  height: 145px;
+
+  margin: 5px auto 0;
+  object-fit: contain;
+}
+
+/* STEP 01 하단 안내 */
+#steps .step-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  max-width: 260px;
+  margin-top: auto;
+  padding: 10px 8px;
+
+  background: #fff0ed;
+  border-radius: 40px;
+
+  color: #f4493d;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+#steps .step-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 22px;
+  height: 22px;
+
+  background: #f4493d;
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* 카드 사이 화살표 */
+#steps .step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+
+  color: #ff776a;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  #steps .steps-container {
+    width: calc(100% - 32px);
+  }
+
+  #steps .steps-flow {
+    grid-template-columns:
+      minmax(0, 1fr) 12px
+      minmax(0, 1fr) 12px
+      minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  #steps .steps-flow > .step {
+    min-height: 300px;
+    padding: 20px 8px 15px;
+  }
+
+  #steps .step h3 {
+    font-size: 18px;
+  }
+
+  #steps .step > img {
+    height: 120px;
+  }
+
+  #steps .step-highlight {
+    font-size: 11px;
+    gap: 4px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  #steps.steps-section {
+    padding: 55px 0 65px;
+  }
+
+  #steps .steps-heading h2 {
+    font-size: clamp(27px, 7vw, 34px);
+  }
+
+  #steps .steps-flow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  #steps .steps-flow > .step {
+    min-height: 260px;
+    padding: 22px 15px;
+  }
+
+  #steps .step h3 {
+    font-size: 21px;
+  }
+
+  #steps .step > img {
+    height: 135px;
+  }
+
+  #steps .step-arrow {
+    height: 20px;
+    font-size: 30px;
+    transform: rotate(90deg);
+  }
+
+  #steps .step-highlight {
+    max-width: 280px;
+    font-size: 13px;
+  }
+}
+
+/* =====================================
+   수익 카드 호버 효과 완전 제거
+===================================== */
+
+/* 기본형 A · 프리미엄 A 공통 */
+.home-profit__card,
+.home-profit__card:hover,
+.home-profit__card:active {
+  transform: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+  cursor: default !important;
+}
+
+/* 기본형 A 배경 및 테두리 고정 */
+.home-profit__card[data-profit="a"],
+.home-profit__card[data-profit="a"]:hover {
+  background: #ffffff !important;
+  border-color: #eee8e4 !important;
+}
+
+/* 프리미엄 A 배경 및 테두리 고정 */
+.home-profit__card[data-profit="b"],
+.home-profit__card[data-profit="b"]:hover {
+  background: #fdfcfa !important;
+  border-color: #f4493d !important;
+}
+
+/* 프리미엄 A 배지 색상 고정 */
+.home-profit__card[data-profit="b"] .home-profit__tag,
+.home-profit__card[data-profit="b"]:hover .home-profit__tag {
+  background: #f4493d !important;
+  color: #ffffff !important;
+}
+
+/* 예상 수익 섹션 신청하기 버튼 */
+.home-profit__apply-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  min-height: 70px;
+  padding: 15px 20px;
+
+  background: #e94f48;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 16px;
+
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.home-profit__apply-btn:hover {
+  background: #df463f;
+}
+
+@media (max-width: 650px) {
+  .home-profit__apply-btn {
+    min-height: 56px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+}
+
+
+/* =====================================
+   활동 방식 STEP 카드 내부 순서 수정
+===================================== */
+
+#steps .steps-flow .step {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* 1. 역할 배지 - 가장 위 */
+#steps .steps-flow .step > .step-tag {
+  order: 1 !important;
+  margin-bottom: 12px !important;
+}
+
+/* 2. STEP 번호 */
+#steps .steps-flow .step > small {
+  order: 2 !important;
+  margin-bottom: 5px !important;
+}
+
+/* 3. 제목 */
+#steps .steps-flow .step > h3 {
+  order: 3 !important;
+  margin: 0 0 12px !important;
+}
+
+/* 4. 3D 이미지 */
+#steps .steps-flow .step > img {
+  order: 4 !important;
+  margin: 0 auto !important;
+  width: 100%;
+  max-width: 210px;
+  height: 145px;
+  object-fit: contain;
+}
+
+/* 5. STEP 01 하단 안내 문구 */
+#steps .steps-flow .step > .step-highlight,
+#steps .steps-flow .step > .step-note {
+  order: 5 !important;
+  margin-top: auto !important;
+}
+
+/* ==========================================
+   공간 소개 / 활동 방식 / 예상 수익
+   콘텐츠 가로폭 통일
+========================================== */
+
+/* PC 공통 폭 */
+:root {
+  --home-content-width: 1100px;
+  --home-side-gap: 24px;
+}
+
+/* 공간 소개, 활동 방식 */
+#spaces .container,
+#steps .steps-container,
+#steps .container {
+  width: min(
+    var(--home-content-width),
+    calc(100% - var(--home-side-gap) * 2)
+  ) !important;
+
+  max-width: var(--home-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 예상 수익 섹션 */
+.home-profit .home-profit__inner {
+  width: min(
+    var(--home-content-width),
+    calc(100% - var(--home-side-gap) * 2)
+  ) !important;
+
+  max-width: var(--home-content-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  box-sizing: border-box;
+}
+
+/* 카드들이 부모 폭을 넘지 않도록 */
+#steps .steps-flow,
+.home-profit .home-profit__cards {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0;
+}
+
+/* 예상 수익 좌우 컬럼 */
+@media (min-width: 1025px) {
+  .home-profit .home-profit__inner {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 0.95fr)
+      minmax(0, 1.05fr);
+    gap: 40px;
+    align-items: start;
+  }
+
+  .home-profit .home-profit__left,
+  .home-profit .home-profit__right {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  :root {
+    --home-side-gap: 20px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  :root {
+    --home-side-gap: 16px;
+  }
+
+  .home-profit .home-profit__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* =====================================
+   N잡 소개 섹션 모바일 반응형 수정
+===================================== */
+
+@media (max-width: 650px) {
+
+  /* 섹션 전체 */
+  .intro.section {
+    min-height: auto !important;
+    padding: 65px 0 !important;
+    overflow: hidden;
+  }
+
+  /* 콘텐츠 중앙 정렬 */
+  .intro .intro-grid {
+    width: calc(100% - 32px) !important;
+    min-height: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 35px !important;
+  }
+
+  /* 제목과 설명 */
+  .intro .intro-copy {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .intro .intro-copy h2 {
+    font-size: clamp(28px, 7vw, 36px) !important;
+    line-height: 1.35 !important;
+  }
+
+  .intro .intro-copy p {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 로고 2개와 × 표시를 가로로 */
+  .intro .intro-logos {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100% !important;
+    gap: 14px !important;
+
+    margin: 0 auto !important;
+  }
+
+  /* 로고 이미지 크기 통일 */
+  .intro .intro-logos img {
+    display: block !important;
+    width: min(35vw, 135px) !important;
+    height: auto !important;
+    object-fit: contain !important;
+    flex-shrink: 1;
+  }
+
+  /* 가운데 × */
+  .intro .intro-logos .intro-times {
+    position: static !important;
+    transform: none !important;
+    flex: 0 0 auto;
+    font-size: 25px !important;
+    color: #b68a5c;
+  }
+}
+
+/* =====================================
+   N잡 소개 섹션 모바일 반응형 수정
+===================================== */
+
+@media (max-width: 650px) {
+
+  /* 섹션 전체 */
+  .intro.section {
+    min-height: auto !important;
+    padding: 65px 0 !important;
+    overflow: hidden;
+  }
+
+  /* 콘텐츠 중앙 정렬 */
+  .intro .intro-grid {
+    width: calc(100% - 32px) !important;
+    min-height: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 35px !important;
+  }
+
+  /* 제목과 설명 */
+  .intro .intro-copy {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .intro .intro-copy h2 {
+    font-size: clamp(28px, 7vw, 36px) !important;
+    line-height: 1.35 !important;
+  }
+
+  .intro .intro-copy p {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 로고 2개와 × 표시를 가로로 */
+  .intro .intro-logos {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100% !important;
+    gap: 14px !important;
+
+    margin: 0 auto !important;
+  }
+
+  /* 로고 이미지 크기 통일 */
+  .intro .intro-logos img {
+    display: block !important;
+    width: min(35vw, 135px) !important;
+    height: auto !important;
+    object-fit: contain !important;
+    flex-shrink: 1;
+  }
+
+  /* 가운데 × */
+  .intro .intro-logos .intro-times {
+    position: static !important;
+    transform: none !important;
+    flex: 0 0 auto;
+    font-size: 25px !important;
+    color: #b68a5c;
+  }
+}
+
+/* 모바일 - HOME × 뛰는사람들 로고 정렬 */
+@media (max-width: 650px) {
+
+  .intro .intro-logos {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  /* 두 로고 */
+  .intro .intro-logos img {
+    position: static !important;
+    width: min(32vw, 130px) !important;
+    height: auto !important;
+    flex: 0 1 auto;
+    transform: none !important;
+  }
+
+  /* × 표시 중앙 배치 */
+  .intro .intro-logos .intro-times {
+    position: static !important;
+    display: block !important;
+
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+
+    transform: none !important;
+    margin: 0 !important;
+
+    flex: 0 0 auto;
+    font-size: 25px !important;
+    line-height: 1;
+    color: #b68a5c;
+  }
+}
+
+
+/* =====================================
+   모바일 HOME × 뛰는사람들 로고 정렬
+===================================== */
+
+@media (max-width: 650px) {
+
+  /* 로고 2개와 ×를 한 줄로 정렬 */
+  .intro-logo-stage {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100% !important;
+    max-width: 420px !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 12px !important;
+  }
+
+  /* HOME / 뛰는사람들 3D 로고 */
+  .intro-logo-stage .intro-animated-logo {
+    position: static !important;
+
+    display: block !important;
+    width: min(32vw, 135px) !important;
+    height: auto !important;
+
+    flex: 0 1 auto !important;
+    object-fit: contain !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+
+  /* 가운데 × 표시 */
+  .intro-logo-stage .intro-cross {
+    position: static !important;
+    display: block !important;
+
+    inset: auto !important;
+    transform: none !important;
+
+    flex: 0 0 auto !important;
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    color: #b68a5c !important;
+  }
+}
+
+/* =====================================
+   모바일 로고 × 중앙 정렬 최종 수정
+===================================== */
+
+@media (max-width: 650px) {
+
+  .intro .intro-logo-stage {
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      24px
+      minmax(0, 1fr) !important;
+
+    align-items: center !important;
+    justify-items: center !important;
+
+    column-gap: 8px !important;
+
+    width: min(100%, 350px) !important;
+    max-width: 350px !important;
+    height: auto !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* HOME 로고 */
+  .intro .intro-logo-home {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    justify-self: end !important;
+  }
+
+  /* × 표시 */
+  .intro .intro-cross {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+
+    position: static !important;
+    inset: auto !important;
+
+    display: block !important;
+    width: 24px !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    transform: none !important;
+
+    font-size: 26px !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    color: #b68a5c !important;
+  }
+
+  /* 뛰는사람들 로고 */
+  .intro .intro-logo-people {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    justify-self: start !important;
+  }
+
+  /* 두 로고 공통 */
+  .intro .intro-logo-stage .intro-animated-logo {
+    position: static !important;
+
+    display: block !important;
+    width: min(32vw, 130px) !important;
+    max-width: 100% !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+}
+
+/* =====================================
+   모바일 로고 × 중앙 정렬 최종 수정
+===================================== */
+
+@media (max-width: 650px) {
+
+  .intro .intro-logo-stage {
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      24px
+      minmax(0, 1fr) !important;
+
+    align-items: center !important;
+    justify-items: center !important;
+
+    column-gap: 8px !important;
+
+    width: min(100%, 350px) !important;
+    max-width: 350px !important;
+    height: auto !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* HOME 로고 */
+  .intro .intro-logo-home {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    justify-self: end !important;
+  }
+
+  /* × 표시 */
+  .intro .intro-cross {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+
+    position: static !important;
+    inset: auto !important;
+
+    display: block !important;
+    width: 24px !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    transform: none !important;
+
+    font-size: 26px !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    color: #b68a5c !important;
+  }
+
+  /* 뛰는사람들 로고 */
+  .intro .intro-logo-people {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    justify-self: start !important;
+  }
+
+  /* 두 로고 공통 */
+  .intro .intro-logo-stage .intro-animated-logo {
+    position: static !important;
+
+    display: block !important;
+    width: min(32vw, 130px) !important;
+    max-width: 100% !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+}
+
+/* 모바일 3D 로고 순서 및 중앙 정렬 수정 */
+@media (max-width: 650px) {
+
+  .intro.intro-motion .intro-logo-stage {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* 첫 번째 - 봉안당 HOME */
+  .intro.intro-motion .intro-logo-home {
+    order: 1 !important;
+  }
+
+  /* 두 번째 - × */
+  .intro.intro-motion .intro-cross {
+    order: 2 !important;
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+    font-size: 26px !important;
+  }
+
+  /* 세 번째 - 뛰는사람들 */
+  .intro.intro-motion .intro-logo-people {
+    order: 3 !important;
+  }
+
+  /* 로고 크기 */
+  .intro.intro-motion .intro-logo-stage img {
+    width: min(32vw, 125px) !important;
+    height: auto !important;
+    flex: 0 1 auto !important;
+    object-fit: contain !important;
+  }
+}
+
+/* =====================================
+   마지막 신청 섹션 전체 배경 이미지
+===================================== */
+
+.closing {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+
+  background-image: url("./assets/foot.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* 텍스트 가독성을 위한 왼쪽 그라데이션 */
+.closing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(36, 18, 12, 0.85) 0%,
+    rgba(36, 18, 12, 0.68) 32%,
+    rgba(36, 18, 12, 0.2) 65%,
+    transparent 100%
+  );
+
+  pointer-events: none;
+}
+
+/* 콘텐츠 */
+.closing .closing-grid {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-height: 380px;
+  width: min(1100px, calc(100% - 44px));
+  margin: 0 auto;
+}
+
+/* 왼쪽 문구 */
+.closing .closing-grid > div {
+  width: min(100%, 530px);
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .closing {
+    min-height: 540px;
+    background-position: 65% center;
+  }
+
+  .closing .closing-grid {
+    min-height: 540px;
+    align-items: flex-start;
+    padding-top: 70px;
+  }
+
+  .closing .closing-grid > div {
+    width: 100%;
+  }
+
+  .closing::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(36, 18, 12, 0.82) 0%,
+      rgba(36, 18, 12, 0.45) 42%,
+      transparent 80%
+    );
+  }
+}
+
+/* =====================================
+   마지막 신청 배너 - 골드 브라운 버튼
+===================================== */
+
+.closing .closing-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  min-width: 305px;
+  min-height: 80px;
+  padding: 17px 34px;
+
+  background: linear-gradient(
+    135deg,
+    #a98154 0%,
+    #987047 100%
+  );
+
+  border: 1px solid rgba(255, 220, 170, 0.3);
+  border-radius: 999px;
+
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.2s ease;
+}
+
+.closing .closing-apply-btn svg {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 24px;
+  color: #ffffff;
+}
+
+.closing .closing-apply-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #b58c5b 0%,
+    #a47b4c 100%
+  );
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .closing .closing-apply-btn {
+    min-width: 250px;
+    min-height: 65px;
+    font-size: 21px;
+    gap: 15px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .closing .closing-apply-btn {
+    width: auto;
+    min-width: 210px;
+    min-height: 58px;
+    padding: 14px 26px;
+    font-size: 18px;
+    gap: 12px;
+  }
+
+  .closing .closing-apply-btn svg {
+    width: 14px;
+    height: 20px;
+  }
+}
+
+/* =====================================
+   마지막 신청 배너 모바일 반응형 수정
+===================================== */
+
+@media (max-width: 650px) {
+
+  /* 배너 전체 */
+  .closing {
+    position: relative;
+    width: 100%;
+    min-height: 680px;
+
+    background-color: #321d13;
+    background-image: url("./assets/foot.png");
+
+    /* 이미지 전체가 잘리지 않도록 */
+    background-size: 100% auto;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+  }
+
+  /* 기존 어두운 오버레이 조정 */
+  .closing::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      to bottom,
+      #321d13 0%,
+      rgba(50, 29, 19, 0.98) 24%,
+      rgba(50, 29, 19, 0.3) 50%,
+      transparent 75%
+    );
+
+    pointer-events: none;
+  }
+
+  /* 텍스트 영역 */
+  .closing .closing-grid {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: calc(100% - 40px);
+    min-height: 680px;
+    margin: 0 auto;
+    padding: 55px 0 0;
+  }
+
+  /* 제목 / 설명 / 버튼 */
+  .closing .closing-grid > div {
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  .closing h2 {
+    margin: 0 0 20px;
+    font-size: clamp(25px, 6.5vw, 32px);
+    line-height: 1.4;
+  }
+
+  .closing p {
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+
+  /* 골드 브라운 신청 버튼 */
+  .closing .closing-apply-btn {
+    min-width: 210px;
+    min-height: 58px;
+    padding: 14px 24px;
+    font-size: 18px;
+  }
+}
+
+/* =====================================
+   마지막 신청 배너 PC / 모바일 이미지
+===================================== */
+
+/* PC - 기존 가로형 이미지 */
+.closing {
+  position: relative;
+  width: 100%;
+
+  background-image: url("./assets/foot.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 텍스트와 버튼을 배경 위에 표시 */
+.closing .closing-grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* 모바일 - 세로형 전용 이미지 */
+@media (max-width: 650px) {
+
+  .closing {
+    min-height: 680px !important;
+    height: auto !important;
+
+    background-image: url("./assets/foot_m.png") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* 위쪽 텍스트 가독성 */
+  .closing::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(30, 17, 11, 0.65) 0%,
+      rgba(30, 17, 11, 0.2) 38%,
+      transparent 65%
+    ) !important;
+
+    pointer-events: none;
+  }
+
+  /* 모바일 콘텐츠 */
+  .closing .closing-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+
+    width: calc(100% - 36px) !important;
+    min-height: 680px !important;
+    padding: 55px 0 35px !important;
+    margin: 0 auto !important;
+  }
+
+  .closing .closing-grid > div {
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  .closing h2 {
+    font-size: clamp(25px, 6.5vw, 32px) !important;
+    line-height: 1.4 !important;
+  }
+
+  .closing p {
+    font-size: 14px !important;
+  }
+
+  /* 기존 골드 브라운 버튼 유지 */
+  .closing .closing-apply-btn {
+    min-width: 190px;
+    min-height: 56px;
+    font-size: 17px;
+  }
+}
+
+/* =====================================
+   마지막 신청 배너 모바일 높이 축소
+===================================== */
+
+@media (max-width: 650px) {
+
+  /* 모바일 배너 높이 */
+  .closing {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 320px !important;
+    min-height: 320px !important;
+    max-height: 320px !important;
+
+    background-image: url("./assets/foot_m.png") !important;
+    background-size: cover !important;
+    background-position: center 48% !important;
+    background-repeat: no-repeat !important;
+
+    overflow: hidden !important;
+  }
+
+  /* 텍스트 가독성 */
+  .closing::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      90deg,
+      rgba(35, 19, 12, 0.55) 0%,
+      rgba(35, 19, 12, 0.15) 65%,
+      transparent 100%
+    ) !important;
+  }
+
+  /* 텍스트와 버튼 */
+  .closing .closing-grid {
+    position: relative !important;
+    z-index: 1;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+
+    width: calc(100% - 28px) !important;
+    height: 320px !important;
+    min-height: 320px !important;
+
+    margin: 0 auto !important;
+    padding: 30px 0 20px !important;
+  }
+
+  .closing .closing-grid > div {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* 제목 */
+  .closing h2 {
+    margin: 0 0 12px !important;
+    font-size: clamp(21px, 5.5vw, 25px) !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.04em;
+  }
+
+  /* 설명 */
+  .closing p {
+    margin: 0 0 15px !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 골드 브라운 버튼 */
+  .closing .closing-apply-btn {
+    width: auto !important;
+    min-width: 170px !important;
+    min-height: 48px !important;
+
+    padding: 10px 20px !important;
+    font-size: 15px !important;
+    gap: 10px !important;
+  }
+
+  .closing .closing-apply-btn svg {
+    width: 11px !important;
+    height: 16px !important;
+  }
+}
+
+/* 모바일 마지막 신청 배너 텍스트 위치 조절 */
+@media (max-width: 650px) {
+
+  .closing .closing-grid > div {
+    position: relative !important;
+    top: 55px !important;
+  }
+
+}
+
+/* =====================================
+   모바일 메인 표지 텍스트 아래로 이동
+===================================== */
+
+@media (max-width: 650px) {
+
+  .hero .hero-copy {
+    position: relative !important;
+    top: 100px !important;
+  }
+
 }

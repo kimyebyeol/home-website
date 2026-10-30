@@ -468,3 +468,75 @@ incomePopup
 
 
 });
+
+/* =====================================
+   혜택 아이콘 애니메이션 한 번만 실행
+===================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const benefitsSection = document.querySelector(".benefits");
+
+  if (!benefitsSection) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+
+      if (!entry.isIntersecting) return;
+
+      // 세 아이콘의 애니메이션 동시 시작
+      benefitsSection.classList.add("animate-once");
+
+      // 한 번 실행한 이후 다시 실행하지 않음
+      observer.unobserve(benefitsSection);
+    },
+    {
+      threshold: 0.25
+    }
+  );
+
+  observer.observe(benefitsSection);
+});
+
+/* 예상 수익 카드 선택 */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".home-profit");
+  if (!section) return;
+
+  const result = section.querySelector(".home-profit__result");
+
+  const profitData = {
+    a: {
+      name: "A",
+      amount: "70만 원"
+    },
+    b: {
+      name: "B",
+      amount: "182만 원"
+    }
+  };
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const key = card.dataset.profit;
+      const selected = profitData[key];
+
+      if (!selected) return;
+
+      cards.forEach((item) => {
+        item.classList.remove("is-active");
+        item.setAttribute("aria-pressed", "false");
+      });
+
+      card.classList.add("is-active");
+      card.setAttribute("aria-pressed", "true");
+
+      result.innerHTML = `
+        선택한 사례 ${selected.name}의
+        예상 최대 수익은 약
+        <strong>${selected.amount}</strong>입니다.
+      `;
+    });
+  });
+});
