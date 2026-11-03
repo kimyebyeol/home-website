@@ -473,30 +473,36 @@ incomePopup
    혜택 아이콘 애니메이션 한 번만 실행
 ===================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const benefitsSection = document.querySelector(".benefits");
 
-  if (!benefitsSection) return;
+/* 혜택 아이콘 - 실제 아이콘이 보일 때 시작 */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".benefits");
+
+  if (!section) return;
+
+  const target = section.querySelector(".three")
+    || section.querySelector(".swipe-wrapper")
+    || section.querySelector(".feature");
+
+  if (!target) return;
 
   const observer = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
+    entries => {
+      if (!entries[0].isIntersecting) return;
 
-      if (!entry.isIntersecting) return;
-
-      // 세 아이콘의 애니메이션 동시 시작
-      benefitsSection.classList.add("animate-once");
-
-      // 한 번 실행한 이후 다시 실행하지 않음
-      observer.unobserve(benefitsSection);
+      section.classList.add("animate-once");
+      observer.disconnect();
     },
     {
-      threshold: 0.25
+      rootMargin: "0px 0px -25% 0px",
+      threshold: 0
     }
   );
 
-  observer.observe(benefitsSection);
+  observer.observe(target);
 });
+
 
 /* 예상 수익 카드 선택 */
 
@@ -836,69 +842,385 @@ document.addEventListener("DOMContentLoaded", () => {
    화면에 진입할 때 재생, 완전히 벗어나면 다음 진입을 위해 초기화
    배경 페이드·가로 스와이프·고정 버튼에는 영향을 주지 않음
 ============================================================ */
+
+/* ==========================================
+   HOME 스크롤 등장 애니메이션
+   실제 콘텐츠가 화면에 들어올 때 실행
+   ========================================== */
+
 (() => {
-  const startReveal = () => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion || !('IntersectionObserver' in window)) return;
+  function initHomeReveal() {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (
+      reducedMotion ||
+      !("IntersectionObserver" in window)
+    ) {
+      return;
+    }
 
     const groups = [
-      ['#prepare', ['.home-prepare__heading', '.home-prepare__slider']],
-      ['#home-reason', ['.home-reason__left', '.home-reason__right']],
-      ['#home-connect', ['.home-connect__left', '.home-connect__right']],
-      ['.intro.intro-motion', ['.intro-copy', '.intro-logo-stage']],
-      ['#benefits', ['.section-heading', '.swipe-wrapper']],
-      ['#spaces', ['.section-heading', '.swipe-wrapper']],
-      ['#steps', ['.steps-heading', '.swipe-wrapper']],
-      ['#profit', ['.home-profit__left', '.home-profit__right']],
-      ['#faq', ['.home-faq-heading', '.home-faq-list']],
-      ['.closing', ['.closing-grid > *']]
+      ["#prepare", [
+        ".home-prepare__heading",
+        ".home-prepare__slider"
+      ]],
+      ["#home-reason", [
+        ".home-reason__left"
+      ]],
+      ["#home-connect", [
+        ".home-connect__left"
+      
+      ]],
+      [".intro.intro-motion", [
+        ".intro-copy",
+        ".intro-logo-stage"
+      ]],
+      ["#benefits", [
+        ".section-heading",
+        ".swipe-wrapper"
+      ]],
+      ["#spaces", [
+        ".section-heading",
+        ".swipe-wrapper"
+      ]],
+      ["#steps", [
+        ".steps-heading",
+        ".swipe-wrapper"
+      ]],
+      ["#profit", [
+        ".home-profit__left",
+        ".home-profit__right"
+      ]],
+      ["#faq", [
+        ".home-faq-heading",
+        ".home-faq-list"
+      ]],
+      [".closing", [
+        ".closing-grid > *"
+      ]]
     ];
 
-    const entries = new Map();
-    for (const [sectionSelector, selectors] of groups) {
-      const section = document.querySelector(sectionSelector);
-      if (!section) continue;
-      const targets = [...new Set(selectors.flatMap(selector =>
-        Array.from(section.querySelectorAll(selector))))];
-      if (!targets.length) continue;
-      targets.forEach((element, index) => {
-        element.classList.add('home-reveal-item');
-        element.style.setProperty('--home-reveal-delay', `${Math.min(index, 3) * 160}ms`);
-      });
-      entries.set(section, targets);
-    }
-    if (!entries.size) return;
+    const targets = new Set();
 
-    // 반복 진입/이탈을 모두 관찰. 화면 상·하단 10%는 전환 완충 영역.
-    // completely exited 상태가 되어야 초기화되므로 경계에서 깜빡이지 않음.
-    const observer = new IntersectionObserver(observations => {
-      for (const observation of observations) {
-        const targets = entries.get(observation.target);
-        if (!targets) continue;
-        for (const element of targets) {
-          element.classList.toggle('is-revealed', observation.isIntersecting);
-        }
-      }
-    }, {
-      root: null,
-      rootMargin: '-10% 0px -10% 0px',
-      threshold: 0
+    groups.forEach(([sectionSelector, selectors]) => {
+      const section = document.querySelector(
+        sectionSelector
+      );
+
+      if (!section) return;
+
+      selectors.forEach((selector, index) => {
+        section.querySelectorAll(selector).forEach(el => {
+          el.classList.add("home-reveal-item");
+          el.style.setProperty(
+            "--home-reveal-delay",
+            `${Math.min(index, 3) * 120}ms`
+          );
+
+          targets.add(el);
+        });
+      });
     });
 
-    // 초기 화면에 보이는 섹션이 갑자기 숨겨졌다 등장하지 않도록 미리 표시.
-    for (const [section, targets] of entries) {
-      const rect = section.getBoundingClientRect();
-      const inset = window.innerHeight * 0.1;
-      if (rect.top < window.innerHeight - inset && rect.bottom > inset) {
-        targets.forEach(element => element.classList.add('is-revealed'));
+    if (!targets.size) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle(
+            "is-revealed",
+            entry.isIntersecting
+          );
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -25% 0px",
+        threshold: 0
       }
-    }
-    document.documentElement.classList.add('home-reveal-ready');
-    entries.forEach((_, section) => observer.observe(section));
-  };
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startReveal, {once: true});
+    );
+
+    // 현재 화면에 보이는 콘텐츠는 그대로 표시
+    targets.forEach(el => {
+      const rect = el.getBoundingClientRect();
+
+      if (
+        rect.top < window.innerHeight * 0.75 &&
+        rect.bottom > 0
+      ) {
+        el.classList.add("is-revealed");
+      }
+    });
+
+    document.documentElement.classList.add(
+      "home-reveal-ready"
+    );
+
+    targets.forEach(el => observer.observe(el));
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initHomeReveal,
+      { once: true }
+    );
   } else {
-    startReveal();
+    initHomeReveal();
   }
 })();
+
+
+/* HOME REASON - 스크롤 진입마다 반복 */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector("#home-reason");
+  if (!section) return;
+
+  const cards = section.querySelectorAll(".home-reason__item");
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+
+      if (entry.isIntersecting) {
+        cards.forEach(card => {
+          card.classList.add("is-card-visible");
+        });
+      } else {
+        cards.forEach(card => {
+          card.classList.remove("is-card-visible");
+        });
+      }
+    },
+    {
+      root: null,
+      rootMargin: "-15% 0px -15% 0px",
+      threshold: 0
+    }
+  );
+
+  observer.observe(section);
+});
+/* HOME CONNECT - 카드 3개 순차 등장 */
+
+/* HOME CONNECT - 스크롤 진입 시 반복 실행 */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector("#home-connect");
+  if (!section) return;
+
+  const cardArea = section.querySelector(".home-connect__right");
+  const cards = section.querySelectorAll(".home-connect__item");
+
+  if (!cardArea || !cards.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+
+      if (entry.isIntersecting) {
+        // 화면에 들어오면 순서대로 등장
+        cards.forEach(card => {
+          card.classList.add("is-card-visible");
+        });
+      } else {
+        // 화면에서 벗어나면 초기화
+        cards.forEach(card => {
+          card.classList.remove("is-card-visible");
+        });
+      }
+    },
+    {
+      root: null,
+      rootMargin: "0px 0px -20% 0px",
+      threshold: 0
+    }
+  );
+
+  observer.observe(cardArea);
+});
+
+/* ==========================================
+   HOME 카드 애니메이션 - 반응형 통합
+   PC / 태블릿 / 모바일
+   재진입 시 반복 실행
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = [
+    {
+      section: "#home-reason",
+      area: ".home-reason__right",
+      card: ".home-reason__item"
+    },
+    {
+      section: "#home-connect",
+      area: ".home-connect__right",
+      card: ".home-connect__item"
+    }
+  ];
+
+  const motion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  if (motion.matches || !("IntersectionObserver" in window)) {
+    return;
+  }
+
+  const mobileQuery = window.matchMedia(
+    "(max-width: 650px)"
+  );
+
+  let observers = [];
+
+  sections.forEach(config => {
+    const section = document.querySelector(config.section);
+    if (!section) return;
+
+    section.querySelectorAll(config.card).forEach(card => {
+      card.classList.add("home-stagger-card");
+    });
+  });
+
+  function setupAnimations() {
+    observers.forEach(observer => observer.disconnect());
+    observers = [];
+
+    sections.forEach(config => {
+      const section = document.querySelector(config.section);
+      if (!section) return;
+
+      const area = section.querySelector(config.area);
+      const cards = [...section.querySelectorAll(config.card)];
+
+      if (!area || !cards.length) return;
+
+      // 화면 크기 변경 시 초기화
+      cards.forEach(card => {
+        card.classList.remove("is-card-visible");
+      });
+
+      if (mobileQuery.matches) {
+        // 모바일: 카드별 화면 진입 감지
+        const observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              entry.target.classList.toggle(
+                "is-card-visible",
+                entry.isIntersecting
+              );
+            });
+          },
+          {
+            rootMargin: "0px 0px -18% 0px",
+            threshold: 0
+          }
+        );
+
+        cards.forEach(card => observer.observe(card));
+        observers.push(observer);
+
+      } else {
+        // PC/태블릿: 카드 영역 진입 시 1,2,3 순차 실행
+        const observer = new IntersectionObserver(
+          entries => {
+            const visible = entries[0].isIntersecting;
+
+            cards.forEach(card => {
+              card.classList.toggle(
+                "is-card-visible",
+                visible
+              );
+            });
+          },
+          {
+            rootMargin: "0px 0px -25% 0px",
+            threshold: 0
+          }
+        );
+
+        observer.observe(area);
+        observers.push(observer);
+      }
+    });
+  }
+
+  document.documentElement.classList.add(
+    "home-stagger-ready"
+  );
+
+  setupAnimations();
+
+  mobileQuery.addEventListener("change", setupAnimations);
+});
+
+/* ==============================================
+   HOME REASON + HOME CONNECT
+   반응형 카드 순차 등장 / 스크롤 재진입 시 반복
+============================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const configs = [
+    {
+      section: "#home-reason",
+      area: ".home-reason__right",
+      card: ".home-reason__item"
+    },
+    {
+      section: "#home-connect",
+      area: ".home-connect__right",
+      card: ".home-connect__item"
+    }
+  ];
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    return;
+  }
+
+  configs.forEach(config => {
+    const section = document.querySelector(config.section);
+    if (!section) return;
+
+    const area = section.querySelector(config.area);
+    const cards = [...section.querySelectorAll(config.card)];
+
+    if (!area || !cards.length) return;
+
+    cards.forEach(card => {
+      card.classList.add("home-stagger-card");
+    });
+
+    // 실제 카드 영역에 들어왔을 때 시작
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries[0].isIntersecting;
+
+        cards.forEach(card => {
+          card.classList.toggle("is-card-visible", visible);
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -25% 0px",
+        threshold: 0
+      }
+    );
+
+    observer.observe(area);
+  });
+
+  document.documentElement.classList.add(
+    "home-stagger-ready"
+  );
+
+});
