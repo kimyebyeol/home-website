@@ -517,6 +517,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+const cards = section.querySelectorAll(
+  ".home-profit__card"
+);
+
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       const key = card.dataset.profit;
@@ -532,6 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.add("is-active");
       card.setAttribute("aria-pressed", "true");
 
+      if (!result) return;
       result.innerHTML = `
         선택한 사례 ${selected.name}의
         예상 최대 수익은 약
@@ -573,3 +578,327 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.key === "Escape") closeMenu();
   });
 });
+
+
+/* 모바일 카드 가로 이동 - 터치는 브라우저 기본 스크롤, 마우스는 드래그 지원 */
+document.addEventListener("DOMContentLoaded", () => {
+ const sliders = document.querySelectorAll(
+  "#benefits .three, #spaces .space-cards, #steps .steps-flow, #prepare .home-prepare__cards"
+);
+  const mobile = window.matchMedia("(max-width: 650px)");
+
+  sliders.forEach((slider) => {
+    slider.setAttribute("aria-label", "좌우로 넘겨 보는 카드 목록");
+    slider.setAttribute("tabindex", "0");
+    let down = false;
+    let startX = 0;
+    let startScroll = 0;
+    let moved = false;
+
+    // 휴대폰 터치는 기본 스와이프를 보존: preventDefault 호출하지 않음
+    slider.addEventListener("pointerdown", (event) => {
+      if (!(mobile.matches || (slider.matches("#spaces .space-cards") && window.matchMedia("(max-width: 1024px)").matches)) || event.pointerType !== "mouse" || event.button !== 0) return;
+      down = true;
+      moved = false;
+      startX = event.clientX;
+      startScroll = slider.scrollLeft;
+      slider.classList.add("is-dragging");
+    });
+    slider.addEventListener("pointermove", (event) => {
+      if (!down) return;
+      const distance = event.clientX - startX;
+      if (Math.abs(distance) > 4) moved = true;
+      slider.scrollLeft = startScroll - distance;
+    });
+    const finish = () => {
+      down = false;
+      slider.classList.remove("is-dragging");
+    };
+    slider.addEventListener("pointerup", finish);
+    slider.addEventListener("pointercancel", finish);
+    slider.addEventListener("pointerleave", finish);
+    slider.addEventListener("click", (event) => {
+      if (moved) { event.preventDefault(); moved = false; }
+    }, true);
+
+    slider.addEventListener("keydown", (event) => {
+      if (!mobile.matches || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      event.preventDefault();
+    const card = slider.querySelector(
+  ".feature, .space, .step, .home-prepare__card"
+);
+      const amount = card ? card.getBoundingClientRect().width + 14 : slider.clientWidth * .85;
+      slider.scrollBy({left: (event.key === "ArrowRight" ? 1 : -1) * amount, behavior: "smooth"});
+    });
+  });
+});
+
+/* =====================================
+   모바일 카드 스와이프 등장 애니메이션
+===================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const sliders = [
+    "#benefits .three",
+    "#spaces .space-cards",
+    "#steps .steps-flow"
+  ];
+
+  const mobile = window.matchMedia("(max-width: 650px)");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  sliders.forEach(selector => {
+    const track = document.querySelector(selector);
+    if (!track) return;
+
+    const cards = Array.from(
+      track.querySelectorAll(
+        ".feature, .space, .step"
+      )
+    );
+
+    if (!cards.length) return;
+
+    let scheduled = false;
+
+    function updateActive() {
+      scheduled = false;
+
+      if (!mobile.matches || reducedMotion.matches) {
+        cards.forEach(card => {
+          card.classList.add("is-current");
+        });
+        return;
+      }
+
+      const trackCenter =
+        track.getBoundingClientRect().left +
+        track.clientWidth / 2;
+
+      let closestCard = cards[0];
+      let closestDistance = Infinity;
+
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(cardCenter - trackCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestCard = card;
+        }
+      });
+
+      cards.forEach(card => {
+        card.classList.toggle(
+          "is-current",
+          card === closestCard
+        );
+      });
+    }
+
+    function scheduleUpdate() {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(updateActive);
+    }
+
+    track.addEventListener("scroll", scheduleUpdate, {
+      passive: true
+    });
+
+    window.addEventListener("resize", scheduleUpdate);
+    mobile.addEventListener("change", scheduleUpdate);
+    reducedMotion.addEventListener("change", scheduleUpdate);
+
+    updateActive();
+  });
+});
+
+/* =====================================
+   HOME 메인 자동 페이드 슬라이드
+===================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const slides = Array.from(
+    document.querySelectorAll(".hero-slide")
+  );
+
+  if (slides.length < 2) return;
+
+  let currentIndex = 0;
+
+  const slideDuration = 2000;
+
+  function showSlide(nextIndex) {
+    slides[currentIndex].classList.remove("is-active");
+
+    currentIndex = nextIndex;
+
+    slides[currentIndex].classList.add("is-active");
+  }
+
+  // 탭이 보이지 않을 때 불필요한 전환 방지
+  const slideTimer = setInterval(() => {
+    if (document.hidden) return;
+
+    const nextIndex =
+      (currentIndex + 1) % slides.length;
+
+    showSlide(nextIndex);
+
+  }, slideDuration);
+
+});
+
+
+/* 공통 가로 스와이프 - 좌우 이동 화살표 */
+document.addEventListener("DOMContentLoaded", () => {
+  const configs = [
+    { id: "benefitsSlider", breakpoint: 1024 },
+    { id: "spacesSlider", breakpoint: 1024 },
+    { id: "stepsSlider", breakpoint: 650 },
+    { id: "prepareSlider", breakpoint: 650 }
+  ];
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  configs.forEach(({ id, breakpoint }) => {
+    const track = document.getElementById(id);
+    const wrapper = track?.closest(".swipe-wrapper");
+    const prev = wrapper?.querySelector(".swipe-prev");
+    const next = wrapper?.querySelector(".swipe-next");
+    if (!track || !wrapper || !prev || !next) return;
+
+    const active = () => window.innerWidth <= breakpoint;
+    const cards = () => [...track.children].filter(el =>
+      el.matches(".feature, .space, .step, .home-prepare__card")
+    );
+    function positions() {
+      const nodes = cards();
+      if (!nodes.length) return [];
+      const base = nodes[0].offsetLeft;
+      return nodes.map(el => el.offsetLeft - base);
+    }
+    function updateButtons() {
+      const enabled = active() && track.scrollWidth > track.clientWidth + 3;
+      const atStart = track.scrollLeft <= 3;
+      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 3;
+      prev.hidden = !enabled || atStart;
+      next.hidden = !enabled || atEnd;
+      prev.disabled = atStart;
+      next.disabled = atEnd;
+    }
+    function move(direction) {
+      const x = track.scrollLeft;
+      const stops = positions();
+      const target = direction > 0
+        ? stops.find(n => n > x + 5)
+        : stops.slice().reverse().find(n => n < x - 5);
+      const fallback = direction > 0 ? track.scrollWidth : 0;
+      track.scrollTo({left: target ?? fallback,
+        behavior: reduced.matches ? "instant" : "smooth"});
+    }
+    prev.addEventListener("click", () => move(-1));
+    next.addEventListener("click", () => move(1));
+    track.addEventListener("scroll", updateButtons, {passive:true});
+    window.addEventListener("resize", updateButtons);
+    requestAnimationFrame(updateButtons);
+  });
+});
+
+/* 브라우저 주소창 숨김 시 모바일 표지 재배치 방지 */
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+  let lastWidth = -1;
+  const apply = () => {
+    const width = document.documentElement.clientWidth;
+    if (width > 650) {
+      hero.style.removeProperty("--mobile-hero-height");
+      lastWidth = width;
+      return;
+    }
+    if (width === lastWidth) return;
+    lastWidth = width;
+    const headerHeight = document.querySelector(".top")?.getBoundingClientRect().height || 62;
+    hero.style.setProperty("--mobile-hero-height", `${Math.max(420, window.innerHeight - headerHeight)}px`);
+  };
+  apply();
+  window.addEventListener("resize", apply);
+});
+
+
+/* ============================================================
+   스크롤 양방향 반복 등장 애니메이션
+   화면에 진입할 때 재생, 완전히 벗어나면 다음 진입을 위해 초기화
+   배경 페이드·가로 스와이프·고정 버튼에는 영향을 주지 않음
+============================================================ */
+(() => {
+  const startReveal = () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+    const groups = [
+      ['#prepare', ['.home-prepare__heading', '.home-prepare__slider']],
+      ['#home-reason', ['.home-reason__left', '.home-reason__right']],
+      ['#home-connect', ['.home-connect__left', '.home-connect__right']],
+      ['.intro.intro-motion', ['.intro-copy', '.intro-logo-stage']],
+      ['#benefits', ['.section-heading', '.swipe-wrapper']],
+      ['#spaces', ['.section-heading', '.swipe-wrapper']],
+      ['#steps', ['.steps-heading', '.swipe-wrapper']],
+      ['#profit', ['.home-profit__left', '.home-profit__right']],
+      ['#faq', ['.home-faq-heading', '.home-faq-list']],
+      ['.closing', ['.closing-grid > *']]
+    ];
+
+    const entries = new Map();
+    for (const [sectionSelector, selectors] of groups) {
+      const section = document.querySelector(sectionSelector);
+      if (!section) continue;
+      const targets = [...new Set(selectors.flatMap(selector =>
+        Array.from(section.querySelectorAll(selector))))];
+      if (!targets.length) continue;
+      targets.forEach((element, index) => {
+        element.classList.add('home-reveal-item');
+        element.style.setProperty('--home-reveal-delay', `${Math.min(index, 3) * 160}ms`);
+      });
+      entries.set(section, targets);
+    }
+    if (!entries.size) return;
+
+    // 반복 진입/이탈을 모두 관찰. 화면 상·하단 10%는 전환 완충 영역.
+    // completely exited 상태가 되어야 초기화되므로 경계에서 깜빡이지 않음.
+    const observer = new IntersectionObserver(observations => {
+      for (const observation of observations) {
+        const targets = entries.get(observation.target);
+        if (!targets) continue;
+        for (const element of targets) {
+          element.classList.toggle('is-revealed', observation.isIntersecting);
+        }
+      }
+    }, {
+      root: null,
+      rootMargin: '-10% 0px -10% 0px',
+      threshold: 0
+    });
+
+    // 초기 화면에 보이는 섹션이 갑자기 숨겨졌다 등장하지 않도록 미리 표시.
+    for (const [section, targets] of entries) {
+      const rect = section.getBoundingClientRect();
+      const inset = window.innerHeight * 0.1;
+      if (rect.top < window.innerHeight - inset && rect.bottom > inset) {
+        targets.forEach(element => element.classList.add('is-revealed'));
+      }
+    }
+    document.documentElement.classList.add('home-reveal-ready');
+    entries.forEach((_, section) => observer.observe(section));
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startReveal, {once: true});
+  } else {
+    startReveal();
+  }
+})();
