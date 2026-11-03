@@ -10176,279 +10176,54 @@ main#main > section:not(.hero) { position:relative; }
 
 }
 
-/* HOME REASON - 카드 순차 등장 */
-
+/* ==================================================
+   카드 순차 등장 애니메이션 - 단일 정의
+   HOME REASON: 느리게 / HOME CONNECT: 기본 속도
+   PC, 태블릿, 모바일 공통. 화면 밖에서는 다시 초기화.
+================================================== */
 @media (prefers-reduced-motion: no-preference) {
-
-  .home-reason .home-reason__item {
-    opacity: 0;
-    transform: translateY(45px);
-    transition:
-      opacity 0.85s ease,
-      transform 0.85s cubic-bezier(.22, 1, .36, 1);
-  }
-
-  .home-reason .home-reason__item.is-card-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .home-reason .home-reason__item:nth-child(1) {
-    transition-delay: 0s;
-  }
-
-  .home-reason .home-reason__item:nth-child(2) {
-    transition-delay: 0.45s;
-  }
-
-  .home-reason .home-reason__item:nth-child(3) {
-    transition-delay: 0.9s;
-  }
-}
-
-/* 움직임 최소화 설정 */
-@media (prefers-reduced-motion: reduce) {
-  .home-reason .home-reason__item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-/* HOME CONNECT - 체크 카드 순차 등장 */
-
-@media (prefers-reduced-motion: no-preference) {
-
-  .home-connect .home-connect__item {
-    opacity: 0;
-    transform: translateY(45px);
-    transition:
-      opacity 0.85s ease,
-      transform 0.85s cubic-bezier(.22, 1, .36, 1);
-  }
-
-  .home-connect .home-connect__item.is-card-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* 첫 번째 카드 */
-  .home-connect .home-connect__item:nth-child(1) {
-    transition-delay: 0s;
-  }
-
-  /* 두 번째 카드 */
-  .home-connect .home-connect__item:nth-child(2) {
-    transition-delay: 0.45s;
-  }
-
-  /* 세 번째 카드 */
-  .home-connect .home-connect__item:nth-child(3) {
-    transition-delay: 0.9s;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-connect .home-connect__item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}/* HOME CONNECT - 스크롤 진입 시 반복 애니메이션 */
-
-@media (prefers-reduced-motion: no-preference) {
-  .home-connect .home-connect__item {
-    opacity: 0;
-    transform: translateY(45px);
-    transition:
-      opacity 0.85s ease,
-      transform 0.85s cubic-bezier(.22, 1, .36, 1);
-  }
-
-  .home-connect .home-connect__item.is-card-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .home-connect .home-connect__item:nth-child(1) {
-    transition-delay: 0s;
-  }
-
-  .home-connect .home-connect__item:nth-child(2) {
-    transition-delay: 0.45s;
-  }
-
-  .home-connect .home-connect__item:nth-child(3) {
-    transition-delay: 0.9s;
-  }
-
-  /* 화면을 벗어날 때 즉시 초기화 */
-  .home-connect .home-connect__item:not(.is-card-visible) {
-    transition-delay: 0s !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-connect .home-connect__item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}/* HOME REASON - 반복 등장 애니메이션 */
-
-@media (prefers-reduced-motion: no-preference) {
-
-  .home-reason .home-reason__item {
-    opacity: 0;
-    transform: translateY(45px);
-
-    transition:
-      opacity 0.85s ease,
-      transform 0.85s cubic-bezier(.22, 1, .36, 1);
-  }
-
-  .home-reason .home-reason__item.is-card-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .home-reason .home-reason__item:nth-child(1) {
-    transition-delay: 0s;
-  }
-
-  .home-reason .home-reason__item:nth-child(2) {
-    transition-delay: 0.45s;
-  }
-
-  .home-reason .home-reason__item:nth-child(3) {
-    transition-delay: 0.9s;
-  }
-
-  /* 화면 이탈 시 지연 없이 초기화 */
-  .home-reason .home-reason__item:not(.is-card-visible) {
-    transition-delay: 0s !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-reason .home-reason__item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* ==========================================
-   HOME 카드 순차 등장 - 반응형 통합
-========================================== */
-
-@media (prefers-reduced-motion: no-preference) {
-
   html.home-stagger-ready .home-stagger-card {
     opacity: 0;
-    transform: translate3d(0, 45px, 0);
-
-    transition:
-      opacity 0.85s ease,
-      transform 0.85s cubic-bezier(.22, 1, .36, 1);
-
+    transform: translate3d(0, 40px, 0);
+    transition-property: opacity, transform;
+    transition-duration: .85s;
+    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
     transition-delay: 0s;
   }
-
-  html.home-stagger-ready
-  .home-stagger-card.is-card-visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
-  /* PC / 태블릿: 1 → 2 → 3 */
-  @media (min-width: 651px) {
-
-    .home-stagger-card.is-card-visible:nth-child(1) {
-      transition-delay: 0s;
-    }
-
-    .home-stagger-card.is-card-visible:nth-child(2) {
-      transition-delay: 0.45s;
-    }
-
-    .home-stagger-card.is-card-visible:nth-child(3) {
-      transition-delay: 0.9s;
-    }
-  }
-
-  /* 모바일: 카드별로 실행 */
-  @media (max-width: 650px) {
-
-    html.home-stagger-ready .home-stagger-card {
-      transform: translate3d(0, 25px, 0);
-      transition-duration: 0.75s;
-    }
-
-    html.home-stagger-ready
-    .home-stagger-card.is-card-visible {
-      transform: translate3d(0, 0, 0);
-      transition-delay: 0s;
-    }
-  }
-}
-
-/* 접근성: 움직임 최소화 */
-@media (prefers-reduced-motion: reduce) {
-  .home-stagger-card {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-/* ==========================================
-   HOME 카드 순차 등장
-   PC / 태블릿 / 모바일 공통
-========================================== */
-
-@media (prefers-reduced-motion: no-preference) {
-
-  html.home-stagger-ready .home-stagger-card {
-    opacity: 0;
-    transform: translate3d(0, 38px, 0);
-    transition:
-      opacity 0.8s ease,
-      transform 0.8s cubic-bezier(.22, 1, .36, 1);
-    transition-delay: 0s;
-    will-change: opacity, transform;
-  }
-
   html.home-stagger-ready .home-stagger-card.is-card-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
-
-  html.home-stagger-ready .home-stagger-card.is-card-visible:nth-child(1) {
-    transition-delay: 0s;
+  /* 빨간색 체크 카드 1→2→3 */
+  html.home-stagger-ready .home-connect__item:nth-child(2).is-card-visible {
+    transition-delay: .4s;
   }
-
-  html.home-stagger-ready .home-stagger-card.is-card-visible:nth-child(2) {
-    transition-delay: 0.35s;
+  html.home-stagger-ready .home-connect__item:nth-child(3).is-card-visible {
+    transition-delay: .8s;
   }
-
-  html.home-stagger-ready .home-stagger-card.is-card-visible:nth-child(3) {
-    transition-delay: 0.7s;
+  /* 가족/위치/비용 카드: 좀 더 느리게 */
+  html.home-stagger-ready .home-reason__item {
+    transition-duration: 1s;
   }
-
-  /* 영역 벗어나면 즉시 초기화 */
+  html.home-stagger-ready .home-reason__item:nth-child(1).is-card-visible {
+    transition-delay: .2s;
+  }
+  html.home-stagger-ready .home-reason__item:nth-child(2).is-card-visible {
+    transition-delay: .75s;
+  }
+  html.home-stagger-ready .home-reason__item:nth-child(3).is-card-visible {
+    transition-delay: 1.4s;
+  }
+  /* 스크롤 이탈 시 지연 없이 초기화 */
   html.home-stagger-ready .home-stagger-card:not(.is-card-visible) {
     transition-delay: 0s !important;
   }
 }
-
-/* 모바일에서는 이동 거리만 살짝 줄이기 */
 @media (max-width: 650px) and (prefers-reduced-motion: no-preference) {
-  html.home-stagger-ready .home-stagger-card {
-    transform: translate3d(0, 26px, 0);
-    transition-duration: 0.75s;
+  html.home-stagger-ready .home-stagger-card:not(.is-card-visible) {
+    transform: translate3d(0, 25px, 0);
   }
 }
-
-/* 접근성 */
 @media (prefers-reduced-motion: reduce) {
   .home-stagger-card {
     opacity: 1 !important;
@@ -10456,166 +10231,56 @@ main#main > section:not(.hero) { position:relative; }
     transition: none !important;
   }
 }
-/* ==============================================
-   HOME 카드 순차 등장 - PC / 태블릿 / 모바일
-============================================== */
 
-@media (prefers-reduced-motion: no-preference) {
-
-  html.home-stagger-ready .home-stagger-card {
-    opacity: 0;
-    transform: translateY(40px);
-
-    transition:
-      opacity 0.85s ease,
-      transform 0.85s cubic-bezier(.22, 1, .36, 1);
-
-    transition-delay: 0s;
-  }
-
-  html.home-stagger-ready
-  .home-stagger-card.is-card-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* 첫 번째 카드 */
-  html.home-stagger-ready
-  .home-stagger-card:nth-child(1).is-card-visible {
-    transition-delay: 0s;
-  }
-
-  /* 두 번째 카드 */
-  html.home-stagger-ready
-  .home-stagger-card:nth-child(2).is-card-visible {
-    transition-delay: 0.4s;
-  }
-
-  /* 세 번째 카드 */
-  html.home-stagger-ready
-  .home-stagger-card:nth-child(3).is-card-visible {
-    transition-delay: 0.8s;
-  }
-
-  /* 화면에서 벗어날 때 초기화 */
-  html.home-stagger-ready
-  .home-stagger-card:not(.is-card-visible) {
-    transition-delay: 0s !important;
-  }
-}
-
-/* 모바일: 이동 거리를 줄여 자연스럽게 */
-@media (max-width: 650px) {
-  html.home-stagger-ready .home-stagger-card {
-    transform: translateY(25px);
-  }
-
-  html.home-stagger-ready
-  .home-stagger-card.is-card-visible {
-    transform: translateY(0);
-  }
-}
-
-/* 움직임 최소화 설정 */
-@media (prefers-reduced-motion: reduce) {
-  .home-stagger-card {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-/* HOME REASON - 카드 애니메이션 속도 조절 */
-
-@media (prefers-reduced-motion: no-preference) {
-
-  /* 카드가 올라오는 시간 */
-  html.home-stagger-ready
-  .home-reason .home-reason__item {
-    transition-duration: 1s !important;
-    transition-timing-function:
-      cubic-bezier(.22, 1, .36, 1) !important;
-  }
-
-  /* 첫 번째 카드 */
-  html.home-stagger-ready
-  .home-reason .home-reason__item:nth-child(1).is-card-visible {
-    transition-delay: 0.2s;
-  }
-
-  /* 두 번째 카드 */
-  html.home-stagger-ready
-  .home-reason .home-reason__item:nth-child(2).is-card-visible {
-    transition-delay: 0.75s;
-  }
-
-  /* 세 번째 카드 */
-  html.home-stagger-ready
-  .home-reason .home-reason__item:nth-child(3).is-card-visible {
-    transition-delay: 1.4s;
-  }
-}
-
-
-/* ==========================================
-   메인 표지 모바일 텍스트 확대 - 최종
-========================================== */
-
-@media (max-width: 650px) {
-
-  /* 제목이 들어갈 공간 */
-  .hero .hero__content {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* 메인 제목 크게 */
-  .hero #hero-title {
-    font-size: clamp(34px, 7.5vw, 36px) !important;
-    line-height: 1.25 !important;
-    font-weight: 850 !important;
-    letter-spacing: -0.055em !important;
-  }
-
-  /* 기존 2줄 구조 유지 */
-  .hero #hero-title > span,
-  .hero #hero-title > em {
-    display: block !important;
-    white-space: nowrap !important;
-  }
-
-  /* 제목 아래 설명 */
-  .hero .hero__subtitle {
-    font-size: 17px !important;
-    line-height: 1.5 !important;
-    font-weight: 750 !important;
-  }
-
-  /* 신청 버튼 글씨 */
-  .hero .hero__cta {
-    font-size: 17px !important;
-  }
-}
-/* ==========================================
-   메인 표지 텍스트 확대
-   모바일 + 태블릿 반응형
-========================================== */
-
-/* 태블릿 / 작은 화면 */
+/* 메인 표지 제목 크기: 모바일과 태블릿 각각 하나의 최종 설정 */
 @media (min-width: 651px) and (max-width: 1199px) {
-
   .hero #hero-title {
     font-size: clamp(38px, 5.5vw, 54px) !important;
     line-height: 1.25 !important;
-    font-weight: 850 !important;
   }
-
   .hero .hero__subtitle {
     font-size: clamp(20px, 2.5vw, 25px) !important;
     line-height: 1.5 !important;
   }
+  .hero .hero__cta { font-size: 20px !important; }
+}
+@media (max-width: 650px) {
+  .hero .hero__content { width: 100% !important; max-width: 100% !important; }
+  .hero #hero-title {
+    font-size: clamp(28px, 7.5vw, 34px) !important;
+    line-height: 1.25 !important;
+    font-weight: 850 !important;
+    letter-spacing: -.055em !important;
+  }
+  .hero #hero-title > span,
+  .hero #hero-title > em { display: block !important; white-space: nowrap !important; }
+  .hero .hero__subtitle { font-size: 17px !important; line-height: 1.5 !important; }
+  .hero .hero__cta { font-size: 17px !important; }
+}
+/* FAQ: 모바일에서만 '궁금한 점을 한눈에' 다음 줄로 */
+.faq-mobile-br { display: none; }
+@media (max-width: 650px) {
+  .faq-mobile-br { display: block; }
+  .home-faq #home-faq-title {
+    text-align: center;
+    font-size: clamp(23px, 5.5vw, 28px);
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+}
 
-  .hero .hero__cta {
-    font-size: 20px !important;
+/* ==========================================
+   메인 슬라이드 - 태블릿 / 모바일 이미지
+========================================== */
+
+/* 태블릿 */
+@media (min-width: 651px) and (max-width: 1199px) {
+
+  .hero .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 
 }
@@ -10623,19 +10288,152 @@ main#main > section:not(.hero) { position:relative; }
 /* 모바일 */
 @media (max-width: 650px) {
 
-  .hero #hero-title {
-    font-size: clamp(28px, 7.5vw, 34px) !important;
-    line-height: 1.25 !important;
-    font-weight: 850 !important;
-  }
-
-  .hero .hero__subtitle {
-    font-size: 17px !important;
-    line-height: 1.5 !important;
-  }
-
-  .hero .hero__cta {
-    font-size: 17px !important;
+  .hero .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 
 }
+
+
+/* ==========================================
+   HOME 메인 표지 - 태블릿 화면 꽉 채우기
+========================================== */
+
+@media (min-width: 651px) and (max-width: 1199px) {
+
+  /* 메인 표지 영역 */
+  .hero {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100svh - 74px) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+    background: #050d23;
+  }
+
+  /* 슬라이드 전체 영역 */
+  .hero .hero-slideshow,
+  .hero .hero-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* 이미지가 화면을 빈틈없이 채우도록 */
+  .hero .hero-slide img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* 텍스트는 기존 위치 유지 */
+  .hero .hero__inner {
+    position: relative !important;
+    z-index: 3 !important;
+    height: 100% !important;
+  }
+}
+
+/* 태블릿 - 메인 표지 최종 설정 */
+
+@media (min-width: 651px) and (max-width: 1199px) {
+
+  .hero {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 16 / 10 !important;
+    overflow: hidden !important;
+  }
+
+  .hero .hero-slideshow,
+  .hero .hero-slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero .hero-slide img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  .hero .hero__inner {
+    position: relative !important;
+    z-index: 3 !important;
+    height: 100% !important;
+  }
+}
+
+/* 태블릿 세로 - 제작 이미지 비율 적용 */
+@media (min-width: 651px) and (max-width: 1199px)
+       and (orientation: portrait) {
+
+  .hero {
+    aspect-ratio: 3 / 4 !important;
+  }
+
+}
+
+/* ==========================================
+   HOME 메인 표지 - 태블릿 빈 공간 제거
+========================================== */
+
+@media (min-width: 651px) and (max-width: 1199px) {
+
+  /* 화면 높이에서 헤더 높이만 제외 */
+  .hero {
+    position: relative !important;
+    width: 100% !important;
+
+    height: calc(100svh - 74px) !important;
+    min-height: calc(100svh - 74px) !important;
+    max-height: none !important;
+
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+  }
+
+  /* 슬라이드 영역 전체 채우기 */
+  .hero .hero-slideshow,
+  .hero .hero-slide {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* 사진이 빈 공간 없이 꽉 차도록 */
+  .hero .hero-slide img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* 기존 텍스트 위치 유지 */
+  .hero .hero__inner {
+    position: relative !important;
+    z-index: 3 !important;
+    height: 100% !important;
+  }
+}
+

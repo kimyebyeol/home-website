@@ -66,37 +66,77 @@
   <div class="hero-slideshow" aria-hidden="true">
 
     <!-- SLIDE 01 -->
-    <picture class="hero-slide is-active">
-      <source
-        media="(max-width: 650px)"
-        srcset="./assets/home_phone.png"
-      >
-      <source
-        media="(max-width: 1199px)"
-        srcset="./assets/hero_tablet.png"
-      >
-      <img
-        src="./assets/hero-original.png"
-        alt=""
-        fetchpriority="high"
-      >
-    </picture>
+ 
+<!-- SLIDE 01 -->
+<picture class="hero-slide is-active">
+
+  <!-- 핸드폰 -->
+  <source
+    media="(max-width: 650px)"
+    srcset="./assets/home_phone.png"
+  >
+
+  <!-- 태블릿 세로 -->
+  <source
+    media="(min-width: 651px) and (max-width: 1199px) and (orientation: portrait)"
+    srcset="./assets/hero_tablet.png"
+  >
+
+  <!-- 태블릿 가로 및 PC -->
+  <img
+    src="./assets/hero-original.png"
+    alt=""
+    fetchpriority="high"
+  >
+
+</picture>
+
 
     <!-- SLIDE 02 -->
-    <picture class="hero-slide">
-      <img
-        src="./assets/ex01.jpg"
-        alt=""
-      >
-    </picture>
+    
+<!-- SLIDE 02 -->
+<picture class="hero-slide">
+
+  <source
+    media="(max-width: 650px)"
+    srcset="./assets/ph_02.jpg"
+  >
+
+  <source
+    media="(min-width: 651px) and (max-width: 1199px) and (orientation: portrait)"
+    srcset="./assets/ta_02.jpg"
+  >
+
+  <img
+    src="./assets/ex01.jpg"
+    alt=""
+  >
+
+</picture>
+
 
     <!-- SLIDE 03 -->
-    <picture class="hero-slide">
-      <img
-        src="./assets/ex02.jpg"
-        alt=""
-      >
-    </picture>
+ 
+<!-- SLIDE 02 -->
+<picture class="hero-slide">
+
+  <source
+    media="(max-width: 650px)"
+    srcset="./assets/ph_01.jpg"
+  >
+
+  <source
+    media="(min-width: 651px) and (max-width: 1199px) and (orientation: portrait)"
+    srcset="./assets/ta_01.jpg"
+  >
+
+  <img
+    src="./assets/ex02.jpg"
+    alt=""
+  >
+
+</picture>
+
 
   </div>
 
@@ -880,7 +920,8 @@
     <div class="home-faq-heading">
 
       <h2 id="home-faq-title">
-        궁금한 점을 한눈에 확인해 보세요
+        궁금한 점을 한눈에<br class="faq-mobile-br">
+        확인해 보세요
       </h2>
     </div>
 
